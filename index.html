@@ -571,7 +571,6 @@
   <section id="services">
     <div class="container">
       <h2 class="accent-clay">Services</h2>
-      <div class="heading-carousel hc-empty" id="hc-services"></div>
       <div class="services-grid">
         <div class="service-card">
           <h3>One-on-One Sessions</h3>
@@ -659,7 +658,6 @@
   <section id="testimonials" style="background: var(--soft-bg);">
     <div class="container">
       <h2 class="accent-marigold">Testimonials</h2>
-      <div class="heading-carousel hc-empty" id="hc-testimonials"></div>
       <p class="section-intro">Stories of hope and change from people who have walked this path.</p>
 
       <div id="testimonials-list">
@@ -699,7 +697,7 @@
 
       <div class="gallery" id="photo-gallery">
         <div class="photo-card">
-          <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
+          <img src="janine-fox.jpg" alt="Janine with her dogs">
           <div class="caption">
             Janine & the dogs
             <div class="date">Fox & Paws</div>
@@ -713,7 +711,6 @@
   <section id="resources" style="background: var(--soft-bg);">
     <div class="container">
       <h2 class="accent-harbor">Resources</h2>
-      <div class="heading-carousel hc-empty" id="hc-resources"></div>
       <p class="section-intro">Weekly topics, suggested reading, and helpful materials for your recovery journey.</p>
 
       <div class="resource-section">
@@ -773,7 +770,6 @@
   <section id="fees">
     <div class="container">
       <h2 class="accent-clay">Fees</h2>
-      <div class="heading-carousel hc-empty" id="hc-fees"></div>
       <div class="fees-box">
         <p class="price">$100 per session</p>
         <p style="margin-bottom:1rem;">Session time is flexible to meet the needs of the client.</p>
@@ -904,7 +900,7 @@
 
     async function loadPhotos() {
       const el = document.getElementById('photo-gallery');
-      const carouselIds = ['hc-services', 'hc-testimonials', 'hc-photos', 'hc-resources', 'hc-fees'];
+      const carouselIds = ['hc-photos'];
       try {
         const q = query(collection(db, 'photos'), orderBy('createdAt', 'desc'));
         const snap = await getDocs(q);
