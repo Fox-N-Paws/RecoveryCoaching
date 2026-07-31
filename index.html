@@ -5,23 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fox & Paws Recovery Coaching | Janine Fox</title>
   <meta name="description" content="Compassionate recovery coaching with Janine Fox. Support for addiction, codependency, and building a life you no longer want to escape from.">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary: #5c7348;
-      --primary-dark: #3f5232;
-      --accent: #f3efe7;
-      --soft-bg: #f8f5f0;
-      --text: #3c332b;
-      --text-light: #6b5e52;
-      --border: #ddd5c7;
+      --primary: #3f6b4a;
+      --primary-dark: #23402c;
+      --clay: #bc5b32;
+      --clay-dark: #9a4826;
+      --marigold: #c9932e;
+      --marigold-dark: #a0741f;
+      --harbor: #3f7a8c;
+      --harbor-dark: #2c5c6b;
+      --accent: #f5ecda;
+      --soft-bg: #f2ead8;
+      --text: #2b2620;
+      --text-light: #6b6153;
+      --border: #e2d6bd;
       --white: #ffffff;
+      --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: var(--font-body);
       line-height: 1.65;
       color: var(--text);
       background: var(--white);
@@ -50,10 +61,11 @@
     }
 
     .logo {
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
       color: var(--primary-dark);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
     nav a {
@@ -64,7 +76,7 @@
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--clay);
       text-decoration: none;
     }
 
@@ -72,20 +84,22 @@
     .testimony {
       background: var(--soft-bg);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
+      border-left: 4px solid var(--marigold);
       border-radius: 0 10px 10px 0;
       padding: 1.5rem 1.75rem;
       margin-bottom: 1.25rem;
     }
     .testimony blockquote {
-      font-size: 1.08rem;
+      font-family: var(--font-display);
+      font-size: 1.12rem;
       font-style: italic;
+      font-weight: 400;
       color: var(--text);
       margin-bottom: 0.85rem;
     }
     .testimony .author {
       font-weight: 600;
-      color: var(--primary-dark);
+      color: var(--marigold-dark);
     }
     .testimony .date {
       font-size: 0.88rem;
@@ -104,7 +118,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(60, 51, 43, 0.06);
+      box-shadow: 0 2px 10px rgba(43, 38, 32, 0.07);
       transition: transform 0.2s ease;
     }
     .photo-card:hover { transform: translateY(-3px); }
@@ -138,7 +152,7 @@
       margin-bottom: 0.75rem;
     }
     .resource-list li strong {
-      color: var(--primary);
+      color: var(--harbor-dark);
       margin-right: 0.4rem;
     }
     .book-item {
@@ -147,8 +161,9 @@
       gap: 0.2rem;
     }
     .book-title {
+      font-family: var(--font-display);
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--primary-dark);
     }
     .book-author {
@@ -164,17 +179,18 @@
       margin-bottom: 2.5rem;
     }
     .resource-section h3 {
-      color: var(--primary-dark);
+      font-family: var(--font-display);
+      color: var(--harbor-dark);
       font-size: 1.25rem;
       margin-bottom: 1rem;
       padding-bottom: 0.35rem;
-      border-bottom: 2px solid var(--primary);
+      border-bottom: 2px solid var(--harbor);
       display: inline-block;
     }
 
     .btn {
       display: inline-block;
-      background: var(--primary);
+      background: var(--clay);
       color: white !important;
       padding: 0.85rem 1.6rem;
       border-radius: 6px;
@@ -186,21 +202,21 @@
       font-size: 1rem;
     }
 
-    .btn:hover { background: var(--primary-dark); }
+    .btn:hover { background: var(--clay-dark); }
 
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary) !important;
+      border: 2px solid var(--clay);
+      color: var(--clay) !important;
     }
 
     .btn-outline:hover {
-      background: var(--primary);
+      background: var(--clay);
       color: white !important;
     }
 
     .hero {
-      background: var(--accent);
+      background: linear-gradient(160deg, var(--accent) 0%, var(--soft-bg) 100%);
       padding: 4.5rem 1.5rem;
       text-align: center;
     }
@@ -208,15 +224,17 @@
     .hero-content { max-width: 760px; margin: 0 auto; }
 
     .hero h1 {
-      font-size: 2.4rem;
+      font-family: var(--font-display);
+      font-size: 2.6rem;
       color: var(--primary-dark);
       margin-bottom: 1rem;
-      line-height: 1.25;
-      font-weight: 700;
+      line-height: 1.2;
+      font-weight: 600;
     }
 
     .hero .quote {
-      font-size: 1.2rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
       color: var(--text-light);
       font-style: italic;
       margin-bottom: 2rem;
@@ -235,12 +253,27 @@
     .container { max-width: 1000px; margin: 0 auto; }
 
     h2 {
-      font-size: 1.8rem;
+      font-family: var(--font-display);
+      font-size: 1.95rem;
       color: var(--primary-dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.6rem;
       text-align: center;
-      font-weight: 700;
+      font-weight: 600;
     }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 52px;
+      height: 3px;
+      background: var(--primary);
+      margin: 0.85rem auto 1.4rem;
+      border-radius: 2px;
+    }
+
+    h2.accent-clay::after { background: var(--clay); }
+    h2.accent-marigold::after { background: var(--marigold); }
+    h2.accent-harbor::after { background: var(--harbor); }
 
     .section-intro {
       text-align: center;
@@ -262,17 +295,18 @@
       height: auto;
       border-radius: 12px;
       display: block;
-      box-shadow: 0 4px 20px rgba(60, 51, 43, 0.08);
+      box-shadow: 0 4px 20px rgba(43, 38, 32, 0.1);
     }
 
     .quote-box {
       background: var(--accent);
-      border-left: 4px solid var(--primary);
+      border-left: 4px solid var(--harbor);
       padding: 1.25rem 1.5rem;
       margin: 2rem 0;
       border-radius: 0 8px 8px 0;
+      font-family: var(--font-display);
       font-style: italic;
-      color: var(--primary-dark);
+      color: var(--harbor-dark);
     }
 
     .services-grid {
@@ -284,14 +318,16 @@
     .service-card {
       background: var(--soft-bg);
       border: 1px solid var(--border);
+      border-top: 3px solid var(--clay);
       border-radius: 10px;
       padding: 1.5rem;
     }
 
     .service-card h3 {
+      font-family: var(--font-display);
       color: var(--primary-dark);
       margin-bottom: 0.5rem;
-      font-size: 1.12rem;
+      font-size: 1.15rem;
     }
 
     .two-col {
@@ -308,6 +344,7 @@
     }
 
     .info-box h3 {
+      font-family: var(--font-display);
       color: var(--primary-dark);
       margin-bottom: 1rem;
     }
@@ -318,6 +355,7 @@
     .fees-box {
       background: var(--soft-bg);
       border: 1px solid var(--border);
+      border-top: 3px solid var(--clay);
       border-radius: 10px;
       padding: 2rem;
       max-width: 560px;
@@ -326,9 +364,10 @@
     }
 
     .fees-box .price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-dark);
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--clay-dark);
       margin: 0.5rem 0;
     }
 
@@ -357,8 +396,8 @@
     textarea { min-height: 120px; resize: vertical; }
 
     .crisis-note {
-      background: #f8f1e3;
-      border-left: 4px solid #c4a35a;
+      background: #f7ecd8;
+      border-left: 4px solid var(--marigold);
       padding: 1rem 1.25rem;
       margin: 2rem 0;
       border-radius: 0 6px 6px 0;
@@ -373,16 +412,86 @@
       font-size: 0.9rem;
     }
 
-    footer a { color: #c5d4b0; }
+    footer h3,
+    footer p strong { font-family: var(--font-display); }
+
+    footer a { color: #cfe0bd; }
 
     .footer-links { margin: 1rem 0; }
     .footer-links a { margin: 0 0.75rem; }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 1.85rem; }
+      .hero h1 { font-size: 1.95rem; }
       .about-grid, .contact-grid, .two-col { grid-template-columns: 1fr; }
       nav { display: none; }
       .nav-container { justify-content: center; }
+    }
+
+    /* Heading photo carousel */
+    .heading-carousel {
+      position: relative;
+      max-width: 700px;
+      height: 260px;
+      margin: 0 auto 1.75rem;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--accent);
+    }
+    .heading-carousel.hc-empty { display: none; }
+    .heading-carousel .hc-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .heading-carousel .hc-slide { min-width: 100%; height: 100%; }
+    .heading-carousel .hc-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .heading-carousel .hc-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(43, 38, 32, 0.55);
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .heading-carousel .hc-arrow:hover { background: rgba(43, 38, 32, 0.8); }
+    .heading-carousel .hc-prev { left: 10px; }
+    .heading-carousel .hc-next { right: 10px; }
+    .heading-carousel .hc-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    .heading-carousel .hc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .heading-carousel .hc-dot.active { background: white; }
+
+    @media (max-width: 768px) {
+      .heading-carousel { height: 180px; }
     }
   </style>
   <script src="firebase-config.js"></script>
@@ -419,9 +528,10 @@
   <section id="about">
     <div class="container">
       <h2>About Janine</h2>
+      <div class="heading-carousel hc-empty" id="hc-about"></div>
       <div class="about-grid">
         <div class="about-image">
-          <img src="janine-fox.jpg" alt="Janine Fox with her three dogs">
+          <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
         </div>
         <div>
           <p style="margin-bottom:1rem;">I have worked for <strong>21 years as a program director</strong> in two reputable community treatment centers in Ventura County.</p>
@@ -461,7 +571,8 @@
 
   <section id="services">
     <div class="container">
-      <h2>Services</h2>
+      <h2 class="accent-clay">Services</h2>
+      <div class="heading-carousel hc-empty" id="hc-services"></div>
       <div class="services-grid">
         <div class="service-card">
           <h3>One-on-One Sessions</h3>
@@ -548,7 +659,8 @@
   <!-- Testimonials -->
   <section id="testimonials" style="background: var(--soft-bg);">
     <div class="container">
-      <h2>Testimonials</h2>
+      <h2 class="accent-marigold">Testimonials</h2>
+      <div class="heading-carousel hc-empty" id="hc-testimonials"></div>
       <p class="section-intro">Stories of hope and change from people who have walked this path.</p>
 
       <div id="testimonials-list">
@@ -582,7 +694,8 @@
   <!-- Photo Library -->
   <section id="photos">
     <div class="container">
-      <h2>Photo Library</h2>
+      <h2 class="accent-clay">Photo Library</h2>
+      <div class="heading-carousel hc-empty" id="hc-photos"></div>
       <p class="section-intro">Moments of connection, healing, and the gentle presence of the dogs.</p>
 
       <div class="gallery" id="photo-gallery">
@@ -600,7 +713,8 @@
   <!-- Resources -->
   <section id="resources" style="background: var(--soft-bg);">
     <div class="container">
-      <h2>Resources</h2>
+      <h2 class="accent-harbor">Resources</h2>
+      <div class="heading-carousel hc-empty" id="hc-resources"></div>
       <p class="section-intro">Weekly topics, suggested reading, and helpful materials for your recovery journey.</p>
 
       <div class="resource-section">
@@ -659,7 +773,8 @@
 
   <section id="fees">
     <div class="container">
-      <h2>Fees</h2>
+      <h2 class="accent-clay">Fees</h2>
+      <div class="heading-carousel hc-empty" id="hc-fees"></div>
       <div class="fees-box">
         <p class="price">$100 per session</p>
         <p style="margin-bottom:1rem;">Session time is flexible to meet the needs of the client.</p>
@@ -672,7 +787,7 @@
 
   <section id="dogs">
     <div class="container">
-      <h2>Why the Dogs?</h2>
+      <h2 class="accent-harbor">Why the Dogs?</h2>
       <p style="margin-bottom:1.25rem;">Three generations of dogs have worked with me in treatment. Clients requested the dogs attend groups, conjoint and individual sessions — and even their graduating ceremonies.</p>
       
       <p style="margin-bottom:1.25rem;">I was informed that the dogs helped reduce their anxiety and depression and made them feel happy, and added a “normal” feeling to a very challenging and scary time in their lives.</p>
@@ -688,7 +803,7 @@
 
   <section id="contact" class="contact-section">
     <div class="container">
-      <h2>Get in Touch</h2>
+      <h2 class="accent-marigold">Get in Touch</h2>
       <p class="section-intro">You don’t have to do this alone.</p>
 
       <div class="crisis-note">
@@ -790,20 +905,63 @@
 
     async function loadPhotos() {
       const el = document.getElementById('photo-gallery');
+      const carouselIds = ['hc-about', 'hc-services', 'hc-testimonials', 'hc-photos', 'hc-resources', 'hc-fees'];
       try {
         const q = query(collection(db, 'photos'), orderBy('createdAt', 'desc'));
         const snap = await getDocs(q);
-        if (snap.empty) return; // keep fallback photo already in the HTML
+        if (snap.empty) return; // keep fallback content already in the HTML; carousels stay hidden
+        const photos = [];
+        snap.forEach(doc => photos.push(doc.data()));
+
         el.innerHTML = '';
-        snap.forEach(doc => {
-          const p = doc.data();
+        photos.forEach(p => {
           el.insertAdjacentHTML('beforeend', `
             <div class="photo-card">
               <img src="${escapeHtml(p.url)}" alt="${escapeHtml(p.caption || 'Fox & Paws photo')}">
               <div class="caption">${escapeHtml(p.caption || '')}</div>
             </div>`);
         });
+
+        carouselIds.forEach(id => buildCarousel(id, photos));
       } catch (e) { console.error('photos load failed', e); }
+    }
+
+    function buildCarousel(containerId, photos) {
+      const el = document.getElementById(containerId);
+      if (!el || !photos || photos.length === 0) return;
+      el.classList.remove('hc-empty');
+
+      let idx = 0;
+      el.innerHTML = `
+        <div class="hc-track">
+          ${photos.map(p => `<div class="hc-slide"><img src="${escapeHtml(p.url)}" alt="${escapeHtml(p.caption || 'Fox & Paws photo')}"></div>`).join('')}
+        </div>
+        ${photos.length > 1 ? `
+          <button class="hc-arrow hc-prev" aria-label="Previous photo">&#10094;</button>
+          <button class="hc-arrow hc-next" aria-label="Next photo">&#10095;</button>
+          <div class="hc-dots">
+            ${photos.map((_, i) => `<button class="hc-dot${i === 0 ? ' active' : ''}" data-i="${i}" aria-label="Go to photo ${i + 1}"></button>`).join('')}
+          </div>` : ''}
+      `;
+
+      if (photos.length <= 1) return;
+
+      const track = el.querySelector('.hc-track');
+      const dots = el.querySelectorAll('.hc-dot');
+
+      function goTo(i) {
+        idx = (i + photos.length) % photos.length;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, di) => d.classList.toggle('active', di === idx));
+      }
+
+      el.querySelector('.hc-prev').addEventListener('click', () => goTo(idx - 1));
+      el.querySelector('.hc-next').addEventListener('click', () => goTo(idx + 1));
+      dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.i, 10))));
+
+      let timer = setInterval(() => goTo(idx + 1), 5000);
+      el.addEventListener('mouseenter', () => clearInterval(timer));
+      el.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(idx + 1), 5000); });
     }
 
     async function loadWeeklyTopics() {
