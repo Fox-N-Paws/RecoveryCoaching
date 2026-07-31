@@ -528,7 +528,6 @@
   <section id="about">
     <div class="container">
       <h2>About Janine</h2>
-      <div class="heading-carousel hc-empty" id="hc-about"></div>
       <div class="about-grid">
         <div class="about-image">
           <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
@@ -905,7 +904,7 @@
 
     async function loadPhotos() {
       const el = document.getElementById('photo-gallery');
-      const carouselIds = ['hc-about', 'hc-services', 'hc-testimonials', 'hc-photos', 'hc-resources', 'hc-fees'];
+      const carouselIds = ['hc-services', 'hc-testimonials', 'hc-photos', 'hc-resources', 'hc-fees'];
       try {
         const q = query(collection(db, 'photos'), orderBy('createdAt', 'desc'));
         const snap = await getDocs(q);
