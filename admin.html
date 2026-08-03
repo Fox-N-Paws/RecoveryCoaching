@@ -172,8 +172,7 @@
     <div class="tabs">
       <button class="tab-btn active" data-tab="testimonials">Testimonials</button>
       <button class="tab-btn" data-tab="photos">Photos</button>
-      <button class="tab-btn" data-tab="topics">Weekly Topics</button>
-      <button class="tab-btn" data-tab="books">Books</button>
+      <button class="tab-btn" data-tab="story">Monthly Story</button>
     </div>
 
     <!-- TESTIMONIALS -->
@@ -208,34 +207,29 @@
       </div>
     </div>
 
-    <!-- WEEKLY TOPICS -->
-    <div class="panel" id="panel-topics">
+    <!-- MONTHLY STORY -->
+    <div class="panel" id="panel-story">
       <div class="card">
-        <h3>Add a Weekly Topic</h3>
-        <input type="text" id="w-week" placeholder="Week label (e.g. Week of August 3)">
-        <input type="text" id="w-topic" placeholder="Topic">
-        <div class="status" id="w-status"></div>
-        <button class="btn" id="w-add-btn">Add Topic</button>
+        <h3>Post a New Story</h3>
+        <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.85rem;">
+          Posting a new story replaces what visitors see as "this month's story." Older stories stay listed below but won't show on the site.
+        </p>
+        <input type="text" id="s-month" placeholder="Month label (e.g. August 2026)">
+        <input type="text" id="s-title" placeholder="Story title">
+        <textarea id="s-body" placeholder="Write the story here…" style="min-height: 160px;"></textarea>
+        <div class="status" id="s-status"></div>
+        <button class="btn" id="s-add-btn">Post Story</button>
       </div>
       <div class="card">
-        <h3>Current Weekly Topics</h3>
-        <ul class="item-list" id="w-list"><li>Loading…</li></ul>
-      </div>
-    </div>
-
-    <!-- BOOKS -->
-    <div class="panel" id="panel-books">
-      <div class="card">
-        <h3>Add a Book Recommendation</h3>
-        <input type="text" id="b-title" placeholder="Book title">
-        <input type="text" id="b-author" placeholder="Author">
-        <textarea id="b-note" placeholder="Short note about why you recommend it"></textarea>
-        <div class="status" id="b-status"></div>
-        <button class="btn" id="b-add-btn">Add Book</button>
+        <h3>Past Stories</h3>
+        <ul class="item-list" id="s-list"><li>Loading…</li></ul>
       </div>
       <div class="card">
-        <h3>Current Books</h3>
-        <ul class="item-list" id="b-list"><li>Loading…</li></ul>
+        <h3>Discussion Comments</h3>
+        <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.85rem;">
+          All comments visitors have left, across every story. Delete anything inappropriate.
+        </p>
+        <ul class="item-list" id="c-list"><li>Loading…</li></ul>
       </div>
     </div>
   </div>
@@ -339,8 +333,7 @@
   function loadAllPanels() {
     loadTestimonials();
     loadPhotos();
-    loadTopics();
-    loadBooks();
+    loadStories();
   }
 
   // ---------- TESTIMONIALS ----------
@@ -457,95 +450,93 @@
     );
   });
 
-  // ---------- WEEKLY TOPICS ----------
-  async function loadTopics() {
-    const list = document.getElementById('w-list');
+  // ---------- MONTHLY STORY ----------
+  let storiesMap = {};
+
+  async function loadStories() {
+    const list = document.getElementById('s-list');
     list.innerHTML = '<li>Loading…</li>';
-    const q = query(collection(db, 'weeklyTopics'), orderBy('createdAt', 'desc'));
+    const q = query(collection(db, 'monthlyStories'), orderBy('createdAt', 'desc'));
     const snap = await getDocs(q);
-    if (snap.empty) { list.innerHTML = '<li>No topics yet.</li>'; return; }
+    storiesMap = {};
+    snap.forEach(d => { storiesMap[d.id] = d.data(); });
+
+    if (snap.empty) {
+      list.innerHTML = '<li>No stories posted yet.</li>';
+    } else {
+      list.innerHTML = '';
+      snap.docs.forEach((d, i) => {
+        const s = d.data();
+        const isCurrent = i === 0; // most recent = what's currently live on the site
+        list.insertAdjacentHTML('beforeend', `
+          <li>
+            <div class="item-body">
+              <div class="item-title">${escapeHtml(s.title)} <span class="item-sub">(${escapeHtml(s.month)})</span>${isCurrent ? ' <span class="item-sub" style="color: var(--primary-dark); font-weight:600;">— currently live</span>' : ''}</div>
+              <div class="item-sub">${escapeHtml((s.body || '').slice(0, 140))}${(s.body || '').length > 140 ? '…' : ''}</div>
+            </div>
+            <button class="btn btn-danger btn-small" data-id="${d.id}">Delete</button>
+          </li>`);
+      });
+      list.querySelectorAll('button[data-id]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!confirm('Delete this story? Its comments will no longer be shown anywhere.')) return;
+          await deleteDoc(doc(db, 'monthlyStories', btn.dataset.id));
+          await loadStories();
+          loadAdminComments();
+        });
+      });
+    }
+
+    loadAdminComments();
+  }
+
+  document.getElementById('s-add-btn').addEventListener('click', async () => {
+    const month = document.getElementById('s-month').value.trim();
+    const title = document.getElementById('s-title').value.trim();
+    const body = document.getElementById('s-body').value.trim();
+    const statusEl = document.getElementById('s-status');
+    if (!month || !title || !body) { statusEl.textContent = 'All three fields are required.'; statusEl.className = 'status error'; return; }
+    try {
+      await addDoc(collection(db, 'monthlyStories'), { month, title, body, createdAt: serverTimestamp() });
+      document.getElementById('s-month').value = '';
+      document.getElementById('s-title').value = '';
+      document.getElementById('s-body').value = '';
+      statusEl.textContent = 'Posted! This is now the story visitors see.'; statusEl.className = 'status ok';
+      loadStories();
+    } catch (e) {
+      statusEl.textContent = 'Error: ' + e.message; statusEl.className = 'status error';
+    }
+  });
+
+  // ---------- DISCUSSION COMMENTS (moderation) ----------
+  async function loadAdminComments() {
+    const list = document.getElementById('c-list');
+    list.innerHTML = '<li>Loading…</li>';
+    const q = query(collection(db, 'storyComments'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+    if (snap.empty) { list.innerHTML = '<li>No comments yet.</li>'; return; }
     list.innerHTML = '';
     snap.forEach(d => {
-      const w = d.data();
+      const c = d.data();
+      const story = storiesMap[c.storyId];
+      const storyLabel = story ? story.title : '(story removed)';
       list.insertAdjacentHTML('beforeend', `
         <li>
           <div class="item-body">
-            <div class="item-title">${escapeHtml(w.week)}</div>
-            <div class="item-sub">${escapeHtml(w.topic)}</div>
+            <div class="item-title">${escapeHtml(c.name)} <span class="item-sub">on “${escapeHtml(storyLabel)}”</span></div>
+            <div class="item-sub">${escapeHtml(c.message)}</div>
           </div>
           <button class="btn btn-danger btn-small" data-id="${d.id}">Delete</button>
         </li>`);
     });
     list.querySelectorAll('button[data-id]').forEach(btn => {
       btn.addEventListener('click', async () => {
-        if (!confirm('Delete this topic?')) return;
-        await deleteDoc(doc(db, 'weeklyTopics', btn.dataset.id));
-        loadTopics();
+        if (!confirm('Delete this comment?')) return;
+        await deleteDoc(doc(db, 'storyComments', btn.dataset.id));
+        loadAdminComments();
       });
     });
   }
-
-  document.getElementById('w-add-btn').addEventListener('click', async () => {
-    const week = document.getElementById('w-week').value.trim();
-    const topic = document.getElementById('w-topic').value.trim();
-    const statusEl = document.getElementById('w-status');
-    if (!week || !topic) { statusEl.textContent = 'Both fields are required.'; statusEl.className = 'status error'; return; }
-    try {
-      await addDoc(collection(db, 'weeklyTopics'), { week, topic, createdAt: serverTimestamp() });
-      document.getElementById('w-week').value = '';
-      document.getElementById('w-topic').value = '';
-      statusEl.textContent = 'Added!'; statusEl.className = 'status ok';
-      loadTopics();
-    } catch (e) {
-      statusEl.textContent = 'Error: ' + e.message; statusEl.className = 'status error';
-    }
-  });
-
-  // ---------- BOOKS ----------
-  async function loadBooks() {
-    const list = document.getElementById('b-list');
-    list.innerHTML = '<li>Loading…</li>';
-    const q = query(collection(db, 'books'), orderBy('createdAt', 'desc'));
-    const snap = await getDocs(q);
-    if (snap.empty) { list.innerHTML = '<li>No books yet.</li>'; return; }
-    list.innerHTML = '';
-    snap.forEach(d => {
-      const b = d.data();
-      list.insertAdjacentHTML('beforeend', `
-        <li>
-          <div class="item-body">
-            <div class="item-title">${escapeHtml(b.title)} <span class="item-sub">— ${escapeHtml(b.author)}</span></div>
-            <div class="item-sub">${escapeHtml(b.note)}</div>
-          </div>
-          <button class="btn btn-danger btn-small" data-id="${d.id}">Delete</button>
-        </li>`);
-    });
-    list.querySelectorAll('button[data-id]').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        if (!confirm('Delete this book?')) return;
-        await deleteDoc(doc(db, 'books', btn.dataset.id));
-        loadBooks();
-      });
-    });
-  }
-
-  document.getElementById('b-add-btn').addEventListener('click', async () => {
-    const title = document.getElementById('b-title').value.trim();
-    const author = document.getElementById('b-author').value.trim();
-    const note = document.getElementById('b-note').value.trim();
-    const statusEl = document.getElementById('b-status');
-    if (!title || !author) { statusEl.textContent = 'Title and author are required.'; statusEl.className = 'status error'; return; }
-    try {
-      await addDoc(collection(db, 'books'), { title, author, note, createdAt: serverTimestamp() });
-      document.getElementById('b-title').value = '';
-      document.getElementById('b-author').value = '';
-      document.getElementById('b-note').value = '';
-      statusEl.textContent = 'Added!'; statusEl.className = 'status ok';
-      loadBooks();
-    } catch (e) {
-      statusEl.textContent = 'Error: ' + e.message; statusEl.className = 'status error';
-    }
-  });
 </script>
 
 </body>
