@@ -155,26 +155,6 @@
       color: var(--harbor-dark);
       margin-right: 0.4rem;
     }
-    .book-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-    .book-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.08rem;
-      color: var(--primary-dark);
-    }
-    .book-author {
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-    .book-note {
-      font-size: 0.9rem;
-      color: var(--text);
-      margin-top: 0.25rem;
-    }
     .resource-section {
       margin-bottom: 2.5rem;
     }
@@ -187,6 +167,61 @@
       border-bottom: 2px solid var(--harbor);
       display: inline-block;
     }
+
+    /* Monthly Story + discussion */
+    #story-content {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--harbor);
+      border-radius: 10px;
+      padding: 1.75rem;
+    }
+    #story-content .story-month {
+      font-size: 0.9rem;
+      color: var(--harbor-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+    #story-content .story-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.75rem;
+    }
+    #story-content .story-body {
+      color: var(--text);
+      white-space: pre-line;
+    }
+    .comment-card {
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .comment-card .comment-name {
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+    }
+    .comment-card .comment-date {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-left: 0.5rem;
+    }
+    .comment-card .comment-message {
+      margin-top: 0.35rem;
+      font-size: 0.97rem;
+    }
+    .comment-status {
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+      margin-top: 0.25rem;
+    }
+    .comment-status.error { color: var(--clay-dark); }
+    .comment-status.ok { color: var(--primary-dark); }
 
     .btn {
       display: inline-block;
@@ -711,48 +746,24 @@
   <section id="resources" style="background: var(--soft-bg);">
     <div class="container">
       <h2 class="accent-harbor">Resources</h2>
-      <p class="section-intro">Weekly topics, suggested reading, and helpful materials for your recovery journey.</p>
+      <p class="section-intro">A story each month to reflect on, and a space to talk about it together.</p>
 
       <div class="resource-section">
-        <h3>Weekly Topics</h3>
-        <ul class="resource-list" id="weekly-topics-list">
-          <li><strong>Week of July 27</strong> Walking in Faith When the Path Is Unclear</li>
-          <li><strong>Week of July 20</strong> The Power of Community & Accountability</li>
-          <li><strong>Week of July 13</strong> Forgiveness: Receiving & Extending Grace</li>
-          <li><strong>Week of July 6</strong> Finding Rest in a Restless World</li>
-          <li><strong>Week of June 29</strong> Identity Beyond Addiction</li>
-        </ul>
-      </div>
+        <h3>This Month's Story</h3>
+        <div id="story-content">
+          <p style="color: var(--text-light);">Loading…</p>
+        </div>
 
-      <div class="resource-section">
-        <h3>Suggested Books</h3>
-        <ul class="resource-list" id="books-list">
-          <li class="book-item">
-            <span class="book-title">Blood is Thicker than Vodka</span>
-            <span class="book-author">Janine Fox</span>
-            <span class="book-note">Janine’s own story of struggle, recovery, and hope — written with her daughter.</span>
-          </li>
-          <li class="book-item">
-            <span class="book-title">The Purpose Driven Life</span>
-            <span class="book-author">Rick Warren</span>
-            <span class="book-note">A practical guide to discovering purpose and meaning.</span>
-          </li>
-          <li class="book-item">
-            <span class="book-title">Mere Christianity</span>
-            <span class="book-author">C.S. Lewis</span>
-            <span class="book-note">A clear, thoughtful exploration of core spiritual principles.</span>
-          </li>
-          <li class="book-item">
-            <span class="book-title">Emotionally Healthy Spirituality</span>
-            <span class="book-author">Peter Scazzero</span>
-            <span class="book-note">How emotional health and spiritual maturity work together.</span>
-          </li>
-          <li class="book-item">
-            <span class="book-title">The Ruthless Elimination of Hurry</span>
-            <span class="book-author">John Mark Comer</span>
-            <span class="book-note">A call to slow down and live at a healthier pace.</span>
-          </li>
-        </ul>
+        <div id="story-discussion" style="margin-top: 2rem;">
+          <h4 style="font-family: var(--font-display); color: var(--harbor-dark); margin-bottom: 1rem;">Join the Discussion</h4>
+          <div id="comments-list"></div>
+          <form id="comment-form" style="margin-top: 1rem;">
+            <input type="text" id="comment-name" placeholder="Your name" required>
+            <textarea id="comment-message" placeholder="Share your thoughts…" required></textarea>
+            <div class="comment-status" id="comment-status"></div>
+            <button type="submit" class="btn" style="align-self: flex-start;">Post Comment</button>
+          </form>
+        </div>
       </div>
 
       <div class="resource-section">
@@ -868,7 +879,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-    import { getFirestore, collection, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    import { getFirestore, collection, query, orderBy, where, limit, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
     const app = initializeApp(window.firebaseConfig);
     const db = getFirestore(app);
@@ -959,43 +970,84 @@
       el.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(idx + 1), 5000); });
     }
 
-    async function loadWeeklyTopics() {
-      const el = document.getElementById('weekly-topics-list');
+    let currentStoryId = null;
+
+    async function loadMonthlyStory() {
+      const el = document.getElementById('story-content');
       try {
-        const q = query(collection(db, 'weeklyTopics'), orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'monthlyStories'), orderBy('createdAt', 'desc'), limit(1));
         const snap = await getDocs(q);
-        if (snap.empty) return; // keep fallback content already in the HTML
-        el.innerHTML = '';
-        snap.forEach(doc => {
-          const w = doc.data();
-          el.insertAdjacentHTML('beforeend', `<li><strong>${escapeHtml(w.week)}</strong> ${escapeHtml(w.topic)}</li>`);
-        });
-      } catch (e) { console.error('weekly topics load failed', e); }
+        if (snap.empty) {
+          el.innerHTML = '<p style="color: var(--text-light);">No story posted yet — check back soon.</p>';
+          document.getElementById('story-discussion').style.display = 'none';
+          return;
+        }
+        const d = snap.docs[0];
+        currentStoryId = d.id;
+        const s = d.data();
+        el.innerHTML = `
+          <div class="story-month">${escapeHtml(s.month || '')}</div>
+          <div class="story-title">${escapeHtml(s.title || '')}</div>
+          <div class="story-body">${escapeHtml(s.body || '')}</div>
+        `;
+        loadComments();
+      } catch (e) {
+        console.error('story load failed', e);
+      }
     }
 
-    async function loadBooks() {
-      const el = document.getElementById('books-list');
+    async function loadComments() {
+      const list = document.getElementById('comments-list');
+      if (!currentStoryId) return;
+      list.innerHTML = '<p style="color: var(--text-light);">Loading comments…</p>';
       try {
-        const q = query(collection(db, 'books'), orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'storyComments'), where('storyId', '==', currentStoryId), orderBy('createdAt', 'asc'));
         const snap = await getDocs(q);
-        if (snap.empty) return; // keep fallback content already in the HTML
-        el.innerHTML = '';
+        if (snap.empty) {
+          list.innerHTML = '<p style="color: var(--text-light);">Be the first to share your thoughts.</p>';
+          return;
+        }
+        list.innerHTML = '';
         snap.forEach(doc => {
-          const b = doc.data();
-          el.insertAdjacentHTML('beforeend', `
-            <li class="book-item">
-              <span class="book-title">${escapeHtml(b.title)}</span>
-              <span class="book-author">${escapeHtml(b.author)}</span>
-              <span class="book-note">${escapeHtml(b.note)}</span>
-            </li>`);
+          const c = doc.data();
+          list.insertAdjacentHTML('beforeend', `
+            <div class="comment-card">
+              <span class="comment-name">${escapeHtml(c.name)}</span>
+              <span class="comment-message">${escapeHtml(c.message)}</span>
+            </div>`);
         });
-      } catch (e) { console.error('books load failed', e); }
+      } catch (e) {
+        console.error('comments load failed', e);
+        list.innerHTML = '<p style="color: var(--text-light);">Comments couldn\'t be loaded right now.</p>';
+      }
+    }
+
+    const commentForm = document.getElementById('comment-form');
+    if (commentForm) {
+      commentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const statusEl = document.getElementById('comment-status');
+        const name = document.getElementById('comment-name').value.trim();
+        const message = document.getElementById('comment-message').value.trim();
+        if (!currentStoryId) { statusEl.textContent = 'No story to comment on yet.'; statusEl.className = 'comment-status error'; return; }
+        if (!name || !message) { statusEl.textContent = 'Please fill in both fields.'; statusEl.className = 'comment-status error'; return; }
+        try {
+          await addDoc(collection(db, 'storyComments'), {
+            storyId: currentStoryId, name, message, createdAt: serverTimestamp()
+          });
+          document.getElementById('comment-name').value = '';
+          document.getElementById('comment-message').value = '';
+          statusEl.textContent = 'Comment posted!'; statusEl.className = 'comment-status ok';
+          loadComments();
+        } catch (err) {
+          statusEl.textContent = 'Error posting comment: ' + err.message; statusEl.className = 'comment-status error';
+        }
+      });
     }
 
     loadTestimonials();
     loadPhotos();
-    loadWeeklyTopics();
-    loadBooks();
+    loadMonthlyStory();
   </script>
 
 </body>
