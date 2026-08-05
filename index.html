@@ -1857,6 +1857,148 @@
       }
     }
 
+  
+    /* About Janine intro page */
+    .about-intro-section {
+      background:
+        radial-gradient(circle at 10% 15%, rgba(201, 147, 46, 0.10), transparent 28%),
+        radial-gradient(circle at 90% 85%, rgba(63, 122, 140, 0.10), transparent 30%),
+        var(--white);
+    }
+
+    .about-intro-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-intro-section .about-image {
+      position: sticky;
+      top: 110px;
+    }
+
+    .about-intro-section .about-image img {
+      width: 100%;
+      display: block;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(43, 38, 32, 0.15);
+    }
+
+    .about-intro-copy {
+      max-width: 720px;
+    }
+
+    .about-intro-copy p {
+      margin-bottom: 1.15rem;
+      line-height: 1.8;
+    }
+
+    .about-lead {
+      font-family: "Neuton", serif;
+      color: var(--primary-dark);
+      font-size: 1.55rem;
+      line-height: 1.45 !important;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.75rem 0 2rem;
+      padding: 1.4rem;
+      border-radius: 20px;
+      background: rgba(245, 236, 218, 0.72);
+      border: 1px solid var(--border);
+    }
+
+    .about-point {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0.65rem;
+      align-items: start;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(226, 214, 189, 0.8);
+    }
+
+    .about-point:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .about-paw {
+      color: var(--primary);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .about-closing {
+      padding: 1.1rem 1.25rem;
+      border-left: 4px solid var(--clay);
+      border-radius: 0 14px 14px 0;
+      background: rgba(188, 91, 50, 0.08);
+      color: var(--primary-dark);
+    }
+
+    .about-goethe-quote {
+      max-width: 840px;
+      margin: 3.5rem auto 0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      box-shadow: 0 18px 48px rgba(43, 38, 32, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .about-goethe-quote .quote-paw {
+      font-size: 1.7rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .about-goethe-quote p {
+      font-family: "Neuton", serif;
+      color: var(--primary-dark);
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      line-height: 1.35;
+      margin-bottom: 0.65rem;
+    }
+
+    .about-goethe-quote cite {
+      color: var(--clay-dark);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 820px) {
+      .about-intro-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-intro-section .about-image {
+        position: static;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .about-points {
+        padding: 1.1rem;
+      }
+
+      .about-goethe-quote {
+        padding: 2rem 1.25rem;
+        border-radius: 20px;
+      }
+    }
+
   </style>
 
   <script src="firebase-config.js"></script>
@@ -1960,41 +2102,87 @@
   </div>
 </section>
 
-<section id="about">
+<section id="about" class="about-intro-section">
   <div class="container">
     <h2>About Janine</h2>
+    <p class="section-intro">
+      Professional experience, lived recovery, and a deeply personal belief that meaningful change is possible.
+    </p>
 
-    <div class="about-grid">
+    <div class="about-intro-layout">
       <div class="about-image">
         <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
       </div>
 
-      <div class="about-story">
-        <p>
-          For more than two decades, I have worked alongside people navigating addiction, codependency, and major life change. I spent <strong>21 years as a program director</strong> in two respected Ventura County treatment centers and have maintained my <strong>CAADE counseling certification for 22 years</strong>.
+      <div class="about-intro-copy">
+        <p class="about-lead">
+          Recovery is not just something I have taught for more than two decades—it is something I have lived.
         </p>
 
         <p>
-          My connection to recovery is also deeply personal. I have been <strong>sober for 23 years</strong> through AA, recovered from a 25-year struggle with bulimia nervosa, and worked through the effects of growing up with alcoholic and emotionally unavailable parents.
+          For over <strong>21 years</strong>, I worked as a program director in two respected Ventura County treatment centers, supporting people navigating addiction, codependency, eating disorders, trauma, and major life change. I have also maintained my <strong>CAADE counseling certification for more than 22 years</strong>.
         </p>
 
         <p>
-          These experiences taught me that recovery is not one-size-fits-all. AA can be life-changing, but it is not the only path. I support each person in finding the tools, structure, accountability, and spiritual or practical approach that fits their life.
+          My connection to recovery is deeply personal. I have been <strong>sober for more than 23 years</strong>, recovered from a 25-year struggle with bulimia nervosa, and worked through the effects of growing up with alcoholic and emotionally unavailable parents.
         </p>
 
         <p>
-          My eldest daughter and I wrote <a href="https://www.amazon.com/Blood-Thicker-than-Vodka-Janine/dp/1959770365" target="_blank" rel="noopener"><strong>Blood is Thicker than Vodka</strong></a>, a book about my life and recovery journey.
+          Those experiences shape the way I work today—with compassion, honesty, accountability, and without judgment. I believe recovery is not about becoming someone entirely new. It is about uncovering the person who has always been there beneath the pain.
         </p>
 
-        <p>
-          I created <strong>Fox &amp; Paws Recovery Coaching in January 2026</strong> so I could continue helping people move beyond addictive chemicals, unhealthy behaviors, and limiting ways of thinking—and begin building lives they genuinely want to live.
-        </p>
+        <div class="about-points" aria-label="Janine's experience and approach">
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span><strong>21 years</strong> as a program director in Ventura County treatment centers</span>
+          </div>
 
-        <div class="about-highlight">
-          I have had the privilege of helping hundreds of people find recovery, rebuild trust in themselves, and rediscover joy.
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span><strong>22+ years</strong> as a CAADE-certified addiction counselor</span>
+          </div>
+
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span><strong>23+ years</strong> of continuous sobriety</span>
+          </div>
+
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span>Personal recovery from addiction, bulimia, and codependency</span>
+          </div>
+
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span>Hundreds of individuals and families supported through recovery</span>
+          </div>
+
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span>Co-author of <a href="https://www.amazon.com/Blood-Thicker-than-Vodka-Janine/dp/1959770365" target="_blank" rel="noopener"><strong>Blood is Thicker than Vodka</strong></a></span>
+          </div>
+
+          <div class="about-point">
+            <span class="about-paw" aria-hidden="true">🐾</span>
+            <span>A coaching style rooted in compassion, accountability, and genuine connection</span>
+          </div>
         </div>
+
+        <p>
+          Recovery looks different for everyone. For some, it includes AA. For others, it may involve CBT <strong>(Cognitive Behavioral Therapy)</strong> and healthier relationships, spiritual growth, or simply having someone beside them who truly understands.
+        </p>
+
+        <p class="about-closing">
+          My role is not to tell you what your recovery should look like. My role is to help you discover what freedom can look like for <strong>you</strong>.
+        </p>
       </div>
     </div>
+
+    <blockquote class="about-goethe-quote">
+      <div class="quote-paw" aria-hidden="true">🐾</div>
+      <p>“At the moment of commitment, the universe conspires to support us.”</p>
+      <cite>— Goethe</cite>
+    </blockquote>
   </div>
 </section>
 
