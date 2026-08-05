@@ -1634,6 +1634,229 @@
       }
     }
 
+  
+    /* ===========================
+       PROFESSIONAL POLISH
+    =========================== */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      transition:
+        padding 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    header.is-scrolled {
+      box-shadow: 0 10px 30px rgba(43, 38, 32, 0.12);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    header.is-scrolled .nav-container {
+      padding-top: 0.72rem;
+      padding-bottom: 0.72rem;
+    }
+
+    .hero {
+      background-attachment: fixed;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 74px;
+      background:
+        radial-gradient(70% 100% at 50% 100%, var(--white) 98%, transparent 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      z-index: 3;
+    }
+
+    .about-story p {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .about-story p::before {
+      content: "🐾";
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      font-size: 0.9rem;
+    }
+
+    .about-highlight {
+      margin-top: 1.4rem;
+      padding: 1.2rem 1.35rem;
+      border-radius: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(63, 107, 74, 0.10),
+        rgba(201, 147, 46, 0.10)
+      );
+      border: 1px solid rgba(63, 107, 74, 0.18);
+      color: var(--primary-dark);
+      font-family: 'Neuton', serif;
+      font-size: 1.15rem;
+      line-height: 1.55;
+    }
+
+    .service-card,
+    .info-box,
+    .path-card,
+    .helpful-resource-card,
+    .photo-card,
+    .testimony {
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .service-card:hover,
+    .info-box:hover,
+    .path-card:hover,
+    .helpful-resource-card:hover,
+    .photo-card:hover,
+    .testimony:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(43, 38, 32, 0.14);
+      border-color: rgba(63, 107, 74, 0.28);
+    }
+
+    .photo-card {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(43, 38, 32, 0.09);
+    }
+
+    .photo-card img {
+      height: 220px;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.035);
+    }
+
+    .gallery {
+      gap: 1.5rem;
+    }
+
+    .helpful-resources-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .helpful-resource-card {
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(245,236,218,.78));
+    }
+
+    .helpful-resource-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(var(--harbor), var(--marigold));
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .heading-carousel .hc-caption {
+      position: absolute;
+      left: 50%;
+      right: auto;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: min(84%, 560px);
+      padding: 0.9rem 1.2rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      color: var(--primary-dark);
+      font-family: var(--font-body);
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255,255,255,.62);
+      backdrop-filter: blur(16px) saturate(125%);
+      -webkit-backdrop-filter: blur(16px) saturate(125%);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        background-attachment: scroll;
+      }
+
+      .hero::after {
+        height: 48px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .heading-carousel .hc-caption {
+        width: calc(100% - 28px);
+        bottom: 14px;
+        padding: 0.78rem 1rem;
+        font-size: 1rem;
+        border-radius: 15px;
+      }
+
+      .photo-card img {
+        height: 200px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .service-card,
+      .info-box,
+      .path-card,
+      .helpful-resource-card,
+      .photo-card,
+      .testimony,
+      .photo-card img {
+        transition: none;
+      }
+    }
+
   </style>
 
   <script src="firebase-config.js"></script>
@@ -1739,49 +1962,38 @@
 
 <section id="about">
   <div class="container">
-
     <h2>About Janine</h2>
 
     <div class="about-grid">
+      <div class="about-image">
+        <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
+      </div>
 
-    <div class="about-image">
-      <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
-    </div>
+      <div class="about-story">
+        <p>
+          For more than two decades, I have worked alongside people navigating addiction, codependency, and major life change. I spent <strong>21 years as a program director</strong> in two respected Ventura County treatment centers and have maintained my <strong>CAADE counseling certification for 22 years</strong>.
+        </p>
 
-    <div>
-      <p style="margin-bottom:1rem;">
-        I have worked for <strong>21 years as a program director</strong> in two reputable community treatment centers in Ventura County.
-      </p>
+        <p>
+          My connection to recovery is also deeply personal. I have been <strong>sober for 23 years</strong> through AA, recovered from a 25-year struggle with bulimia nervosa, and worked through the effects of growing up with alcoholic and emotionally unavailable parents.
+        </p>
 
-      <p style="margin-bottom:1rem;">
-        I am certified as a <strong>CAADE licensed counselor for 22 years</strong> and maintain my annual CEUs.
-      </p>
+        <p>
+          These experiences taught me that recovery is not one-size-fits-all. AA can be life-changing, but it is not the only path. I support each person in finding the tools, structure, accountability, and spiritual or practical approach that fits their life.
+        </p>
 
-      <p style="margin-bottom:1rem;">
-        On a personal level, I have overcome multiple addictions and unhealthy dependencies in my life. Through AA, I have been <strong>sober 23 years</strong>. AA is not mandatory, but I do encourage people with addictive chemistry to seek out its many benefits.
-      </p>
+        <p>
+          My eldest daughter and I wrote <a href="https://www.amazon.com/Blood-Thicker-than-Vodka-Janine/dp/1959770365" target="_blank" rel="noopener"><strong>Blood is Thicker than Vodka</strong></a>, a book about my life and recovery journey.
+        </p>
 
-      <p style="margin-bottom:1rem;">
-        I struggled with an eating disorder (bulimia nervosa) for 25 years. I have also worked a program for recovery from codependency, manifested by growing up with alcoholic parents who were unavailable.
-      </p>
+        <p>
+          I created <strong>Fox &amp; Paws Recovery Coaching in January 2026</strong> so I could continue helping people move beyond addictive chemicals, unhealthy behaviors, and limiting ways of thinking—and begin building lives they genuinely want to live.
+        </p>
 
-      <p style="margin-bottom:1rem;">
-        My eldest daughter and I wrote a book about my life and my struggles:
-        <a href="https://www.amazon.com/Blood-Thicker-than-Vodka-Janine/dp/1959770365" target="_blank" rel="noopener">
-          <strong>Blood is Thicker than Vodka</strong>
-        </a>
-        (available on Amazon).
-      </p>
-
-      <p style="margin-bottom:1rem;">
-        I created <strong>Fox & Paws in January 2026</strong> so I would be able to continue to help those who struggle in seeking freedom from the bondage of addictive chemicals, unhealthy behaviors, and ways of thinking.
-      </p>
-
-      <p>
-        I have personally enabled many hundreds of people to find recovery and embrace the joy in living once again.
-      </p>
-
-    </div>
+        <div class="about-highlight">
+          I have had the privilege of helping hundreds of people find recovery, rebuild trust in themselves, and rediscover joy.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2242,40 +2454,6 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const revealItems = [
-        ...document.querySelectorAll(
-          "section .container > h2, section .section-intro, .about-grid, .service-card, .info-box, .testimony, .photo-card, .fees-box, .quote-box, #story-content, .contact-grid, .path-card, .path-connector, .coaching-compass, .scope-boundary"
-        )
-      ];
-
-      revealItems.forEach((item, index) => {
-        item.classList.add("reveal");
-        item.classList.add(`reveal-delay-${(index % 3) + 1}`);
-      });
-
-      if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-          entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-        );
-
-        revealItems.forEach(item => observer.observe(item));
-      } else {
-        revealItems.forEach(item => item.classList.add("is-visible"));
-      }
-    });
-  </script>
-
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
       const menuButton = document.querySelector(".mobile-menu-toggle");
       const navigation = document.getElementById("primary-navigation");
 
@@ -2361,6 +2539,55 @@
       window.addEventListener("resize", () => {
         if (window.innerWidth > 900) closeMenu();
       });
+    });
+  </script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const siteHeader = document.querySelector("header");
+
+      function updateHeader() {
+        if (!siteHeader) return;
+        siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+      }
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, { passive: true });
+
+      const revealItems = document.querySelectorAll(
+        "section .container > h2, section .section-intro, .about-grid, .service-card, .info-box, .path-card, .helpful-resource-card, .testimony, .photo-card, .fees-box, .quote-box, #story-content, .contact-grid, .coaching-compass, .scope-boundary"
+      );
+
+      revealItems.forEach(item => item.classList.add("reveal"));
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -45px 0px" }
+        );
+
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add("is-visible"));
+      }
+
+      const hero = document.querySelector(".hero");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      if (hero && !reduceMotion.matches && window.innerWidth > 900) {
+        window.addEventListener("scroll", () => {
+          const offset = Math.min(window.scrollY * 0.18, 90);
+          hero.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+        }, { passive: true });
+      }
     });
   </script>
 
