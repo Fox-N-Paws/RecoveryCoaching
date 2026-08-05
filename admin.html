@@ -317,29 +317,14 @@
   } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
 
   let app, auth, db, storage;
-  const hasFirebaseConfig =
-    window.firebaseConfig &&
-    window.firebaseConfig.apiKey &&
-    !String(window.firebaseConfig.apiKey).includes('PASTE_YOUR');
-
-  if (!hasFirebaseConfig) {
-    showFatalBanner(
-      'Firebase is not available in this preview because firebase-config.js is not loaded here. ' +
-      'Upload this admin.html beside your existing firebase-config.js in GitHub Pages, then open the live admin page.'
-    );
-
-    document.getElementById('login-btn').disabled = true;
-    document.getElementById('login-status').textContent =
-      'Preview mode only — Firebase login becomes available on the deployed site.';
-  } else {
-    try {
-      app = initializeApp(window.firebaseConfig);
-      auth = getAuth(app);
-      db = getFirestore(app);
-      storage = getStorage(app);
-    } catch (e) {
-      showFatalBanner('Firebase failed to initialize: ' + e.message);
-    }
+  try {
+    app = initializeApp(window.firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+    storage = getStorage(app);
+  } catch (e) {
+    showFatalBanner('Firebase failed to initialize: ' + e.message);
+    throw e;
   }
 
   function escapeHtml(str) {
@@ -354,7 +339,6 @@
   const loginStatus = document.getElementById('login-status');
 
   loginForm.addEventListener('submit', async (e) => {
-    if (!auth) return;
     e.preventDefault(); // stops the page from reloading, which is what a bare <button> inside a <form> does by default
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
@@ -371,9 +355,9 @@
     }
   });
 
-  document.getElementById('logout-btn').addEventListener('click', () => { if (auth) signOut(auth); });
+  document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
 
-  if (auth) onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, (user) => {
     if (user) {
       document.getElementById('login-screen').classList.add('hidden');
       document.getElementById('dashboard').classList.remove('hidden');
