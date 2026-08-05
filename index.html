@@ -292,38 +292,37 @@
       color: white !important;
     }
 
-    /* HERO LANDSCAPE */
-    .hero {
-      position: relative;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5.5rem 1.5rem;
-      text-align: center;
-      overflow: hidden;
-
-      background-image:
-        .hero {
+ /* HERO LANDSCAPE */
+.hero {
   position: relative;
-  min-height: 520px;
-  padding: 5.5rem 1.5rem;
+  min-height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5.5rem 1.5rem;
   text-align: center;
   overflow: hidden;
 
-  background-image: url("./hero-landscape.jpg");
+  background-image: url("https://fox-n-paws.github.io/RecoveryCoaching/hero-landscape.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(35, 64, 44, 0.25);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+}
 
     .hero-content {
       position: relative;
@@ -724,7 +723,6 @@
     <div class="nav-container">
       <div class="logo">Fox & Paws Recovery Coaching</div>
 
-```
   <nav>
     <a href="#about">About Janine</a>
     <a href="#services">Services</a>
@@ -771,10 +769,17 @@
 
   </div>
 </section>
-      <h2>About Janine</h2>
+  
+<section id="about">
+  <div class="container">
 
-```
+    <h2>About Janine</h2>
+
+    <div class="about-grid">
   <div class="about-grid">
+      </div>
+</section>
+      
     <div class="about-image">
       <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
     </div>
@@ -812,15 +817,7 @@
         I have personally enabled many hundreds of people to find recovery and embrace the joy in living once again.
       </p>
 
-      <div style="margin-top: 1.75rem;">
-        <a href="tel:+18189614203" class="btn">
-          Schedule a free phone conversation
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-```
+     
 
   </section>
 
@@ -1183,11 +1180,7 @@
         By appointment
       </p>
 
-      <div style="margin-top: 1.5rem;">
-        <a href="tel:+18189614203" class="btn">
-          Schedule a free phone conversation
-        </a>
-      </div>
+  
 
       <p style="margin-top:1.5rem; font-size:0.95rem; color: var(--text-light);">
         Messages are typically returned within one business day. Please keep initial messages general.
