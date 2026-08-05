@@ -305,11 +305,19 @@
 
       background-image:
         .hero {
-  background:
-   linear-gradient(rgba(35, 64, 44, 0.20), rgba(35, 64, 44, 0.20)),
-   url("./hero-landscape.jpg")
+  position: relative;
+  min-height: 520px;
   padding: 5.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  overflow: hidden;
+
+  background-image: url("./hero-landscape.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
       background-position: center center;
