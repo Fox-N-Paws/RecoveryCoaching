@@ -144,6 +144,12 @@
   .hidden { display: none !important; }
   .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 0.5rem 0; }
   .progress-bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.2s; }
+
+  .item-list a {
+    color: var(--primary-dark);
+    font-weight: 600;
+  }
+  .item-list a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -171,9 +177,10 @@
 
   <div class="wrap">
     <div class="tabs">
-      <button class="tab-btn active" data-tab="testimonials">Testimonials</button>
-      <button class="tab-btn" data-tab="photos">Photos</button>
-      <button class="tab-btn" data-tab="story">Monthly Story</button>
+      <button class="tab-btn active" data-tab="testimonials">⭐ Testimonials</button>
+      <button class="tab-btn" data-tab="photos">📷 Photos</button>
+      <button class="tab-btn" data-tab="story">📝 Monthly Story</button>
+      <button class="tab-btn" data-tab="resources">📚 Resources</button>
     </div>
 
     <!-- TESTIMONIALS -->
@@ -232,6 +239,46 @@
         </p>
         <ul class="item-list" id="c-list"><li>Loading…</li></ul>
       </div>
+    <!-- RESOURCES -->
+    <div class="panel" id="panel-resources">
+      <div class="card">
+        <h3>Add a Helpful Resource</h3>
+        <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.85rem;">
+          Add a video, meeting list, article, worksheet, book, organization, podcast, or any other useful link.
+        </p>
+
+        <input type="text" id="r-title" placeholder="Resource title">
+
+        <select id="r-type">
+          <option value="Video">Video</option>
+          <option value="Meeting List">Meeting List</option>
+          <option value="Article">Article</option>
+          <option value="Book">Book</option>
+          <option value="Podcast">Podcast</option>
+          <option value="Worksheet">Worksheet</option>
+          <option value="Organization">Organization</option>
+          <option value="Support">Support</option>
+          <option value="Other Resource">Other Resource</option>
+        </select>
+
+        <textarea id="r-description" placeholder="Brief description"></textarea>
+        <input type="url" id="r-url" placeholder="Link (https://...)">
+        <input type="text" id="r-button-text" placeholder="Button text (optional, e.g. Watch Video)">
+
+        <label style="display:flex; align-items:center; gap:0.55rem; margin:0.35rem 0 0.9rem;">
+          <input type="checkbox" id="r-active" checked style="width:auto; margin:0;">
+          <span style="font-size:0.92rem;">Show this resource on the public website</span>
+        </label>
+
+        <div class="status" id="r-status"></div>
+        <button class="btn" id="r-add-btn">Publish Resource</button>
+      </div>
+
+      <div class="card">
+        <h3>Current Helpful Resources</h3>
+        <ul class="item-list" id="r-list"><li>Loading…</li></ul>
+      </div>
+    </div>
     </div>
   </div>
 </div>
@@ -270,14 +317,29 @@
   } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
 
   let app, auth, db, storage;
-  try {
-    app = initializeApp(window.firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
-  } catch (e) {
-    showFatalBanner('Firebase failed to initialize: ' + e.message);
-    throw e;
+  const hasFirebaseConfig =
+    window.firebaseConfig &&
+    window.firebaseConfig.apiKey &&
+    !String(window.firebaseConfig.apiKey).includes('PASTE_YOUR');
+
+  if (!hasFirebaseConfig) {
+    showFatalBanner(
+      'Firebase is not available in this preview because firebase-config.js is not loaded here. ' +
+      'Upload this admin.html beside your existing firebase-config.js in GitHub Pages, then open the live admin page.'
+    );
+
+    document.getElementById('login-btn').disabled = true;
+    document.getElementById('login-status').textContent =
+      'Preview mode only — Firebase login becomes available on the deployed site.';
+  } else {
+    try {
+      app = initializeApp(window.firebaseConfig);
+      auth = getAuth(app);
+      db = getFirestore(app);
+      storage = getStorage(app);
+    } catch (e) {
+      showFatalBanner('Firebase failed to initialize: ' + e.message);
+    }
   }
 
   function escapeHtml(str) {
@@ -292,6 +354,7 @@
   const loginStatus = document.getElementById('login-status');
 
   loginForm.addEventListener('submit', async (e) => {
+    if (!auth) return;
     e.preventDefault(); // stops the page from reloading, which is what a bare <button> inside a <form> does by default
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
@@ -308,9 +371,9 @@
     }
   });
 
-  document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
+  document.getElementById('logout-btn').addEventListener('click', () => { if (auth) signOut(auth); });
 
-  onAuthStateChanged(auth, (user) => {
+  if (auth) onAuthStateChanged(auth, (user) => {
     if (user) {
       document.getElementById('login-screen').classList.add('hidden');
       document.getElementById('dashboard').classList.remove('hidden');
@@ -335,6 +398,7 @@
     loadTestimonials();
     loadPhotos();
     loadStories();
+    loadResources();
   }
 
   // ---------- TESTIMONIALS ----------
@@ -506,6 +570,105 @@
       loadStories();
     } catch (e) {
       statusEl.textContent = 'Error: ' + e.message; statusEl.className = 'status error';
+    }
+  });
+
+
+  // ---------- HELPFUL RESOURCES ----------
+  async function loadResources() {
+    const list = document.getElementById('r-list');
+    list.innerHTML = '<li>Loading…</li>';
+
+    try {
+      const q = query(collection(db, 'helpfulResources'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+
+      if (snap.empty) {
+        list.innerHTML = '<li>No helpful resources yet.</li>';
+        return;
+      }
+
+      list.innerHTML = '';
+
+      snap.forEach(d => {
+        const r = d.data();
+        const statusLabel = r.isActive === false ? 'Hidden' : 'Visible';
+        const buttonText = r.buttonText || 'View Resource';
+
+        list.insertAdjacentHTML('beforeend', `
+          <li>
+            <div class="item-body">
+              <div class="item-title">
+                ${escapeHtml(r.title || 'Untitled Resource')}
+                <span class="item-sub">(${escapeHtml(r.type || 'Resource')} • ${statusLabel})</span>
+              </div>
+              <div class="item-sub">${escapeHtml(r.description || '')}</div>
+              ${r.url ? `<div class="item-sub"><a href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${escapeHtml(buttonText)}</a></div>` : ''}
+            </div>
+            <button class="btn btn-danger btn-small" data-id="${d.id}">Delete</button>
+          </li>
+        `);
+      });
+
+      list.querySelectorAll('button[data-id]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!confirm('Delete this resource?')) return;
+          await deleteDoc(doc(db, 'helpfulResources', btn.dataset.id));
+          loadResources();
+        });
+      });
+    } catch (e) {
+      list.innerHTML = `<li><span class="status error">Error loading resources: ${escapeHtml(e.message)}</span></li>`;
+    }
+  }
+
+  document.getElementById('r-add-btn').addEventListener('click', async () => {
+    const title = document.getElementById('r-title').value.trim();
+    const type = document.getElementById('r-type').value;
+    const description = document.getElementById('r-description').value.trim();
+    const url = document.getElementById('r-url').value.trim();
+    const buttonText = document.getElementById('r-button-text').value.trim();
+    const isActive = document.getElementById('r-active').checked;
+    const statusEl = document.getElementById('r-status');
+
+    if (!title || !url) {
+      statusEl.textContent = 'Title and link are required.';
+      statusEl.className = 'status error';
+      return;
+    }
+
+    try {
+      new URL(url);
+    } catch {
+      statusEl.textContent = 'Please enter a valid link beginning with http:// or https://';
+      statusEl.className = 'status error';
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, 'helpfulResources'), {
+        title,
+        type,
+        description,
+        url,
+        buttonText: buttonText || 'View Resource',
+        isActive,
+        createdAt: serverTimestamp()
+      });
+
+      document.getElementById('r-title').value = '';
+      document.getElementById('r-type').value = 'Video';
+      document.getElementById('r-description').value = '';
+      document.getElementById('r-url').value = '';
+      document.getElementById('r-button-text').value = '';
+      document.getElementById('r-active').checked = true;
+
+      statusEl.textContent = 'Resource published!';
+      statusEl.className = 'status ok';
+      loadResources();
+    } catch (e) {
+      statusEl.textContent = 'Error: ' + e.message;
+      statusEl.className = 'status error';
     }
   });
 
