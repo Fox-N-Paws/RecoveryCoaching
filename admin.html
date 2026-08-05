@@ -144,12 +144,6 @@
   .hidden { display: none !important; }
   .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 0.5rem 0; }
   .progress-bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.2s; }
-
-  .item-list a {
-    color: var(--primary-dark);
-    font-weight: 600;
-  }
-  .item-list a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -244,7 +238,7 @@
       <div class="card">
         <h3>Add a Helpful Resource</h3>
         <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.85rem;">
-          Add a video, meeting list, article, worksheet, book, organization, podcast, or any other useful link.
+          Add a video, meeting list, article, worksheet, book, organization, podcast, or other useful link.
         </p>
 
         <input type="text" id="r-title" placeholder="Resource title">
@@ -573,10 +567,9 @@
       }
 
       list.innerHTML = '';
-
       snap.forEach(d => {
         const r = d.data();
-        const statusLabel = r.isActive === false ? 'Hidden' : 'Visible';
+        const visibility = r.isActive === false ? 'Hidden' : 'Visible';
         const buttonText = r.buttonText || 'View Resource';
 
         list.insertAdjacentHTML('beforeend', `
@@ -584,7 +577,7 @@
             <div class="item-body">
               <div class="item-title">
                 ${escapeHtml(r.title || 'Untitled Resource')}
-                <span class="item-sub">(${escapeHtml(r.type || 'Resource')} • ${statusLabel})</span>
+                <span class="item-sub">(${escapeHtml(r.type || 'Resource')} • ${visibility})</span>
               </div>
               <div class="item-sub">${escapeHtml(r.description || '')}</div>
               ${r.url ? `<div class="item-sub"><a href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${escapeHtml(buttonText)}</a></div>` : ''}
