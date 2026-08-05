@@ -932,6 +932,333 @@
       }
     }
 
+  
+    /* Distinct “Who This Is For” journey */
+    .audience-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(201, 147, 46, 0.13), transparent 30%),
+        radial-gradient(circle at 88% 85%, rgba(63, 122, 140, 0.12), transparent 32%),
+        var(--soft-bg);
+    }
+
+    .recovery-path {
+      display: grid;
+      grid-template-columns: 1fr 110px 1fr;
+      align-items: stretch;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .path-card {
+      position: relative;
+      padding: 2.4rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(226, 214, 189, 0.9);
+      box-shadow: 0 18px 50px rgba(43, 38, 32, 0.11);
+      overflow: hidden;
+    }
+
+    .path-card::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      right: -55px;
+      bottom: -65px;
+      opacity: 0.12;
+    }
+
+    .path-card-start::after { background: var(--marigold); }
+    .path-card-growth::after { background: var(--harbor); }
+
+    .path-number {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      line-height: 1;
+      color: rgba(35, 64, 44, 0.10);
+    }
+
+    .path-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .path-label,
+    .clarity-kicker {
+      margin-bottom: 0.35rem;
+      color: var(--clay-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .path-card h3 {
+      font-family: var(--font-display);
+      color: var(--primary-dark);
+      font-size: 1.55rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .path-description {
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .path-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .path-list li {
+      position: relative;
+      padding: 0.65rem 0 0.65rem 2rem;
+      border-bottom: 1px solid rgba(226, 214, 189, 0.72);
+    }
+
+    .path-list li:last-child { border-bottom: none; }
+
+    .path-list li::before {
+      content: "🐾";
+      position: absolute;
+      left: 0;
+      top: 0.63rem;
+      font-size: 0.9rem;
+    }
+
+    .growth-note {
+      margin-top: 1.5rem;
+      padding: 1.15rem 1.25rem;
+      border-radius: 16px;
+      background: rgba(63, 122, 140, 0.10);
+      border-left: 4px solid var(--harbor);
+      color: var(--harbor-dark);
+    }
+
+    .growth-note strong {
+      display: block;
+      font-family: var(--font-display);
+      margin-bottom: 0.3rem;
+    }
+
+    .path-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .path-connector span {
+      width: 2px;
+      flex: 1;
+      min-height: 55px;
+      background: linear-gradient(var(--marigold), var(--harbor));
+      opacity: 0.55;
+    }
+
+    .path-paw {
+      width: 58px;
+      height: 58px;
+      margin: 0.8rem 0;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 22px rgba(43, 38, 32, 0.10);
+      font-size: 1.35rem;
+    }
+
+    /* Distinct coaching clarity layout */
+    .coaching-clarity-section {
+      background:
+        linear-gradient(135deg, rgba(35, 64, 44, 0.98), rgba(63, 107, 74, 0.94));
+      color: var(--white);
+    }
+
+    .coaching-clarity-section h2 {
+      color: var(--white);
+    }
+
+    .coaching-clarity-section h2::after {
+      background: var(--marigold);
+    }
+
+    .coaching-clarity-section .section-intro {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .coaching-compass {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      max-width: 920px;
+      margin: 0 auto 2rem;
+      padding: 2.5rem;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .compass-center {
+      width: 190px;
+      height: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-align: center;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.30), transparent 35%),
+        rgba(245, 236, 218, 0.14);
+      border: 1px solid rgba(245, 236, 218, 0.45);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.20),
+        inset 0 0 35px rgba(255, 255, 255, 0.08);
+    }
+
+    .compass-paw {
+      font-size: 2rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .compass-center span {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      line-height: 1.15;
+      color: var(--accent);
+    }
+
+    .coaching-support .clarity-kicker,
+    .scope-boundary .clarity-kicker {
+      color: #e5bd68;
+    }
+
+    .coaching-support h3,
+    .scope-boundary h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .support-pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .support-pill-grid span {
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      color: rgba(255, 255, 255, 0.94);
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .scope-boundary {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.7rem 2rem;
+      border-radius: 22px;
+      background: var(--accent);
+      color: var(--text);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .scope-boundary h3 {
+      color: var(--primary-dark);
+      margin-bottom: 0.45rem;
+    }
+
+    .scope-boundary p:last-child {
+      color: var(--text-light);
+    }
+
+    .boundary-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 820px) {
+      .recovery-path {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .path-connector {
+        flex-direction: row;
+        height: 58px;
+      }
+
+      .path-connector span {
+        height: 2px;
+        min-height: 0;
+        flex: 1;
+        background: linear-gradient(90deg, var(--marigold), var(--harbor));
+      }
+
+      .path-paw {
+        margin: 0 0.8rem;
+        flex: 0 0 54px;
+      }
+
+      .coaching-compass {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem 1.35rem;
+      }
+
+      .compass-center {
+        margin: 0 auto;
+      }
+
+      .support-pill-grid {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .path-card {
+        padding: 1.7rem 1.35rem;
+        border-radius: 22px;
+      }
+
+      .coaching-compass {
+        border-radius: 22px;
+      }
+
+      .scope-boundary {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+    }
+
   </style>
 
   <script src="firebase-config.js"></script>
@@ -1108,69 +1435,95 @@
 
   </section>
 
-  <section style="background: var(--soft-bg);">
-    <div class="container">
-      <h2>Who This Is For</h2>
+  <section class="audience-section">
+  <div class="container">
+    <h2>Who This Is For</h2>
+    <p class="section-intro">
+      Recovery coaching can meet you at the beginning of change or support you as you continue building a meaningful life in recovery.
+    </p>
 
-  <div class="two-col">
-    <div class="info-box">
-      <h3>Early Recovery Support</h3>
+    <div class="recovery-path">
+      <article class="path-card path-card-start">
+        <div class="path-number">01</div>
+        <div class="path-icon" aria-hidden="true">🌱</div>
+        <p class="path-label">A place to begin</p>
+        <h3>Early Recovery Support</h3>
+        <p class="path-description">A steady next step for someone who:</p>
 
-      <p style="margin-bottom:0.75rem;">
-        Perfect for someone who:
-      </p>
+        <ul class="path-list">
+          <li>Just left treatment, IOP, or sober living</li>
+          <li>Wants extra accountability</li>
+          <li>Has relapsed and needs guidance</li>
+          <li>Is building a recovery routine</li>
+        </ul>
+      </article>
 
-      <ul>
-        <li>Just left treatment, IOP, or Sober Living</li>
-        <li>Wants extra accountability</li>
-        <li>Has relapsed and needs guidance</li>
-        <li>Is building a recovery routine</li>
-      </ul>
-    </div>
+      <div class="path-connector" aria-hidden="true">
+        <span></span>
+        <div class="path-paw">🐾</div>
+        <span></span>
+      </div>
 
-    <div class="info-box">
-      <h3>Recovery Maintenance</h3>
-      <p>
-        For people with months or years sober who want to continue growing emotionally and spiritually.
-      </p>
-    </div>
-  </div>
-</div>
+      <article class="path-card path-card-growth">
+        <div class="path-number">02</div>
+        <div class="path-icon" aria-hidden="true">🌿</div>
+        <p class="path-label">A place to keep growing</p>
+        <h3>Recovery Maintenance</h3>
+        <p class="path-description">
+          For people with months or years sober who want continued emotional and spiritual growth, stronger routines, and support staying connected to the life they have built.
+        </p>
 
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>What Recovery Coaching Is (and Is Not)</h2>
-
-  <div class="two-col">
-    <div class="info-box">
-      <h3>Recovery Coaching is:</h3>
-
-      <ul>
-        <li>Encouragement</li>
-        <li>Accountability</li>
-        <li>Education</li>
-        <li>Goal Setting</li>
-        <li>Support</li>
-        <li>Connection</li>
-        <li>Practical tools</li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <h3>Recovery Coaching is not:</h3>
-
-      <ul>
-        <li>Therapy</li>
-        <li>Medical Advice</li>
-        <li>Making clinical diagnoses</li>
-      </ul>
+        <div class="growth-note">
+          <strong>Recovery is not only about staying sober.</strong>
+          It is also about continuing to grow, reconnect, and move forward with intention.
+        </div>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
-  </section>
+<section class="coaching-clarity-section">
+  <div class="container">
+    <h2>What Recovery Coaching Is (and Is Not)</h2>
+    <p class="section-intro">
+      Recovery coaching is practical, encouraging, and forward-focused—with clear boundaries around clinical care.
+    </p>
+
+    <div class="coaching-compass">
+      <div class="compass-center">
+        <div class="compass-paw" aria-hidden="true">🐾</div>
+        <span>Recovery<br>Coaching</span>
+      </div>
+
+      <div class="coaching-support">
+        <p class="clarity-kicker">What you can expect</p>
+        <h3>Support That Moves With You</h3>
+
+        <div class="support-pill-grid">
+          <span>Encouragement</span>
+          <span>Accountability</span>
+          <span>Education</span>
+          <span>Goal Setting</span>
+          <span>Support</span>
+          <span>Connection</span>
+          <span>Practical Tools</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scope-boundary">
+      <div class="boundary-icon" aria-hidden="true">✓</div>
+      <div>
+        <p class="clarity-kicker">Clear professional boundaries</p>
+        <h3>What Coaching Does Not Replace</h3>
+        <p>
+          Recovery coaching is not therapy, medical advice, or clinical diagnosis.
+          When clinical or medical care is needed, coaching can work alongside—not replace—qualified professionals.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Testimonials -->
 
@@ -1458,7 +1811,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       const revealItems = [
         ...document.querySelectorAll(
-          "section .container > h2, section .section-intro, .about-grid, .service-card, .info-box, .testimony, .photo-card, .fees-box, .quote-box, #story-content, .contact-grid"
+          "section .container > h2, section .section-intro, .about-grid, .service-card, .info-box, .testimony, .photo-card, .fees-box, .quote-box, #story-content, .contact-grid, .path-card, .path-connector, .coaching-compass, .scope-boundary"
         )
       ];
 
