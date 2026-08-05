@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -30,7 +31,11 @@
       --font-body: 'Lora', Georgia, 'Times New Roman', serif;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: var(--font-body);
@@ -39,8 +44,14 @@
       background: var(--white);
     }
 
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     header {
       background: var(--white);
@@ -90,6 +101,7 @@
       padding: 1.5rem 1.75rem;
       margin-bottom: 1.25rem;
     }
+
     .testimony blockquote {
       font-family: var(--font-display);
       font-size: 1.12rem;
@@ -98,10 +110,12 @@
       color: var(--text);
       margin-bottom: 0.85rem;
     }
+
     .testimony .author {
       font-weight: 600;
       color: var(--marigold-dark);
     }
+
     .testimony .date {
       font-size: 0.88rem;
       color: var(--text-light);
@@ -114,6 +128,7 @@
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 1.25rem;
     }
+
     .photo-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -122,7 +137,11 @@
       box-shadow: 0 2px 10px rgba(43, 38, 32, 0.07);
       transition: transform 0.2s ease;
     }
-    .photo-card:hover { transform: translateY(-3px); }
+
+    .photo-card:hover {
+      transform: translateY(-3px);
+    }
+
     .photo-card img {
       width: 100%;
       height: 180px;
@@ -130,11 +149,13 @@
       display: block;
       background: var(--accent);
     }
+
     .photo-card .caption {
       padding: 0.85rem 1rem;
       font-size: 0.95rem;
       color: var(--text);
     }
+
     .photo-card .date {
       font-size: 0.8rem;
       color: var(--text-light);
@@ -145,6 +166,7 @@
     .resource-list {
       list-style: none;
     }
+
     .resource-list li {
       background: var(--soft-bg);
       border: 1px solid var(--border);
@@ -152,13 +174,16 @@
       padding: 1.1rem 1.35rem;
       margin-bottom: 0.75rem;
     }
+
     .resource-list li strong {
       color: var(--harbor-dark);
       margin-right: 0.4rem;
     }
+
     .resource-section {
       margin-bottom: 2.5rem;
     }
+
     .resource-section h3 {
       font-family: var(--font-display);
       color: var(--harbor-dark);
@@ -177,6 +202,7 @@
       border-radius: 10px;
       padding: 1.75rem;
     }
+
     #story-content .story-month {
       font-size: 0.9rem;
       color: var(--harbor-dark);
@@ -185,16 +211,19 @@
       letter-spacing: 1px;
       margin-bottom: 0.4rem;
     }
+
     #story-content .story-title {
       font-family: var(--font-display);
       font-size: 1.4rem;
       color: var(--primary-dark);
       margin-bottom: 0.75rem;
     }
+
     #story-content .story-body {
       color: var(--text);
       white-space: pre-line;
     }
+
     .comment-card {
       background: var(--soft-bg);
       border: 1px solid var(--border);
@@ -202,27 +231,37 @@
       padding: 1rem 1.25rem;
       margin-bottom: 0.75rem;
     }
+
     .comment-card .comment-name {
       font-weight: 600;
       color: var(--primary-dark);
       font-size: 0.95rem;
     }
+
     .comment-card .comment-date {
       font-size: 0.8rem;
       color: var(--text-light);
       margin-left: 0.5rem;
     }
+
     .comment-card .comment-message {
       margin-top: 0.35rem;
       font-size: 0.97rem;
     }
+
     .comment-status {
       font-size: 0.9rem;
       min-height: 1.2rem;
       margin-top: 0.25rem;
     }
-    .comment-status.error { color: var(--clay-dark); }
-    .comment-status.ok { color: var(--primary-dark); }
+
+    .comment-status.error {
+      color: var(--clay-dark);
+    }
+
+    .comment-status.ok {
+      color: var(--primary-dark);
+    }
 
     .btn {
       display: inline-block;
@@ -238,7 +277,9 @@
       font-size: 1rem;
     }
 
-    .btn:hover { background: var(--clay-dark); }
+    .btn:hover {
+      background: var(--clay-dark);
+    }
 
     .btn-outline {
       background: transparent;
@@ -251,12 +292,34 @@
       color: white !important;
     }
 
+    /* HERO LANDSCAPE */
     .hero {
-      background:
-        linear-gradient(rgba(35, 64, 44, 0.5), rgba(35, 64, 44, 0.5)),
-        url('hero-landscape.svg') center/cover no-repeat;
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 5.5rem 1.5rem;
       text-align: center;
+      overflow: hidden;
+
+      background-image:
+        linear-gradient(
+          rgba(35, 64, 44, 0.48),
+          rgba(35, 64, 44, 0.48)
+        ),
+        url('hero-landscape.jpg');
+
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     .hero-paw {
@@ -266,8 +329,6 @@
       display: block;
     }
 
-    .hero-content { max-width: 760px; margin: 0 auto; }
-
     .hero h1 {
       font-family: var(--font-display);
       font-size: 2.6rem;
@@ -275,7 +336,7 @@
       margin-bottom: 1rem;
       line-height: 1.2;
       font-weight: 600;
-      text-shadow: 0 2px 12px rgba(35, 64, 44, 0.4);
+      text-shadow: 0 2px 12px rgba(35, 64, 44, 0.55);
     }
 
     .hero .quote {
@@ -285,7 +346,7 @@
       font-style: italic;
       margin-bottom: 2rem;
       line-height: 1.5;
-      text-shadow: 0 1px 8px rgba(35, 64, 44, 0.35);
+      text-shadow: 0 1px 8px rgba(35, 64, 44, 0.55);
     }
 
     .hero-buttons {
@@ -305,9 +366,14 @@
       color: var(--primary-dark) !important;
     }
 
-    section { padding: 4rem 1.5rem; }
+    section {
+      padding: 4rem 1.5rem;
+    }
 
-    .container { max-width: 1000px; margin: 0 auto; }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
     h2 {
       font-family: var(--font-display);
@@ -328,9 +394,17 @@
       border-radius: 2px;
     }
 
-    h2.accent-clay::after { background: var(--clay); }
-    h2.accent-marigold::after { background: var(--marigold); }
-    h2.accent-harbor::after { background: var(--harbor); }
+    h2.accent-clay::after {
+      background: var(--clay);
+    }
+
+    h2.accent-marigold::after {
+      background: var(--marigold);
+    }
+
+    h2.accent-harbor::after {
+      background: var(--harbor);
+    }
 
     .section-intro {
       text-align: center;
@@ -406,8 +480,13 @@
       margin-bottom: 1rem;
     }
 
-    .info-box ul { padding-left: 1.2rem; }
-    .info-box li { margin-bottom: 0.45rem; }
+    .info-box ul {
+      padding-left: 1.2rem;
+    }
+
+    .info-box li {
+      margin-bottom: 0.45rem;
+    }
 
     .fees-box {
       background: var(--soft-bg);
@@ -428,7 +507,9 @@
       margin: 0.5rem 0;
     }
 
-    .contact-section { background: var(--soft-bg); }
+    .contact-section {
+      background: var(--soft-bg);
+    }
 
     .contact-grid {
       display: grid;
@@ -436,12 +517,23 @@
       gap: 3rem;
     }
 
-    .contact-info p { margin-bottom: 1rem; font-size: 1.05rem; }
-    .contact-info strong { color: var(--primary-dark); }
+    .contact-info p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
 
-    form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-info strong {
+      color: var(--primary-dark);
+    }
 
-    input, textarea {
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input,
+    textarea {
       padding: 0.85rem 1rem;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -450,7 +542,10 @@
       background: var(--white);
     }
 
-    textarea { min-height: 120px; resize: vertical; }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
 
     .crisis-note {
       background: #f7ecd8;
@@ -470,18 +565,49 @@
     }
 
     footer h3,
-    footer p strong { font-family: var(--font-display); }
+    footer p strong {
+      font-family: var(--font-display);
+    }
 
-    footer a { color: #cfe0bd; }
+    footer a {
+      color: #cfe0bd;
+    }
 
-    .footer-links { margin: 1rem 0; }
-    .footer-links a { margin: 0 0.75rem; }
+    .footer-links {
+      margin: 1rem 0;
+    }
+
+    .footer-links a {
+      margin: 0 0.75rem;
+    }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 1.95rem; }
-      .about-grid, .contact-grid, .two-col { grid-template-columns: 1fr; }
-      nav { display: none; }
-      .nav-container { justify-content: center; }
+      .hero {
+        min-height: 500px;
+        padding: 4rem 1.25rem;
+      }
+
+      .hero h1 {
+        font-size: 1.95rem;
+      }
+
+      .hero .quote {
+        font-size: 1.05rem;
+      }
+
+      .about-grid,
+      .contact-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .nav-container {
+        justify-content: center;
+      }
     }
 
     /* Heading photo carousel */
@@ -494,19 +620,29 @@
       overflow: hidden;
       background: var(--accent);
     }
-    .heading-carousel.hc-empty { display: none; }
+
+    .heading-carousel.hc-empty {
+      display: none;
+    }
+
     .heading-carousel .hc-track {
       display: flex;
       height: 100%;
       transition: transform 0.5s ease;
     }
-    .heading-carousel .hc-slide { min-width: 100%; height: 100%; }
+
+    .heading-carousel .hc-slide {
+      min-width: 100%;
+      height: 100%;
+    }
+
     .heading-carousel .hc-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .heading-carousel .hc-arrow {
       position: absolute;
       top: 50%;
@@ -524,9 +660,19 @@
       justify-content: center;
       line-height: 1;
     }
-    .heading-carousel .hc-arrow:hover { background: rgba(43, 38, 32, 0.8); }
-    .heading-carousel .hc-prev { left: 10px; }
-    .heading-carousel .hc-next { right: 10px; }
+
+    .heading-carousel .hc-arrow:hover {
+      background: rgba(43, 38, 32, 0.8);
+    }
+
+    .heading-carousel .hc-prev {
+      left: 10px;
+    }
+
+    .heading-carousel .hc-next {
+      right: 10px;
+    }
+
     .heading-carousel .hc-dots {
       position: absolute;
       bottom: 10px;
@@ -536,6 +682,7 @@
       justify-content: center;
       gap: 6px;
     }
+
     .heading-carousel .hc-dot {
       width: 8px;
       height: 8px;
@@ -545,332 +692,523 @@
       border: none;
       padding: 0;
     }
-    .heading-carousel .hc-dot.active { background: white; }
+
+    .heading-carousel .hc-dot.active {
+      background: white;
+    }
 
     @media (max-width: 768px) {
-      .heading-carousel { height: 180px; }
+      .heading-carousel {
+        height: 180px;
+      }
     }
   </style>
+
   <script src="firebase-config.js"></script>
+
 </head>
+
 <body>
 
   <header>
     <div class="nav-container">
       <div class="logo">Fox & Paws Recovery Coaching</div>
-      <nav>
-        <a href="#about">About Janine</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#photos">Photos</a>
-        <a href="#resources">Resources</a>
-        <a href="#fees">Fees</a>
-        <a href="#dogs">Why the Dogs?</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+
+```
+  <nav>
+    <a href="#about">About Janine</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#photos">Photos</a>
+    <a href="#resources">Resources</a>
+    <a href="#fees">Fees</a>
+    <a href="#dogs">Why the Dogs?</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+```
+
   </header>
+
+  <!-- HERO -->
 
   <section class="hero">
     <div class="hero-content">
-      <svg class="hero-paw" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
-        <ellipse cx="18" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(-25 18 36)"/>
-        <ellipse cx="37" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(-8 37 19)"/>
-        <ellipse cx="63" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(8 63 19)"/>
-        <ellipse cx="82" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(25 82 36)"/>
-      </svg>
-      <h1>Fox & Paws Recovery Coaching</h1>
-      <p class="quote">“Recovery isn’t simply about stopping a behavior. It’s about creating a life you no longer want to escape from.”</p>
-      <div class="hero-buttons">
-        <a href="tel:+18189614203" class="btn">Schedule a free phone conversation</a>
-        <a href="#contact" class="btn btn-outline">Send a Message</a>
-      </div>
-    </div>
+
+```
+  <svg class="hero-paw" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
+    <ellipse cx="18" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(-25 18 36)"/>
+    <ellipse cx="37" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(-8 37 19)"/>
+    <ellipse cx="63" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(8 63 19)"/>
+    <ellipse cx="82" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(25 82 36)"/>
+  </svg>
+
+  <h1>Fox & Paws Recovery Coaching</h1>
+
+  <p class="quote">
+    “Recovery isn’t simply about stopping a behavior. It’s about creating a life you no longer want to escape from.”
+  </p>
+
+  <div class="hero-buttons">
+    <a href="tel:+18189614203" class="btn">
+      Schedule a free phone conversation
+    </a>
+
+    <a href="#contact" class="btn btn-outline">
+      Send a Message
+    </a>
+  </div>
+
+</div>
+```
+
   </section>
 
   <section id="about">
     <div class="container">
       <h2>About Janine</h2>
-      <div class="about-grid">
-        <div class="about-image">
-          <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
-        </div>
-        <div>
-          <p style="margin-bottom:1rem;">I have worked for <strong>21 years as a program director</strong> in two reputable community treatment centers in Ventura County.</p>
-          
-          <p style="margin-bottom:1rem;">I am certified as a <strong>CAADE licensed counselor for 22 years</strong> and maintain my annual CEUs.</p>
-          
-          <p style="margin-bottom:1rem;">On a personal level, I have overcome multiple addictions and unhealthy dependencies in my life. Through AA, I have been <strong>sober 23 years</strong>. AA is not mandatory, but I do encourage people with addictive chemistry to seek out its many benefits.</p>
-          
-          <p style="margin-bottom:1rem;">I struggled with an eating disorder (bulimia nervosa) for 25 years. I have also worked a program for recovery from codependency, manifested by growing up with alcoholic parents who were unavailable.</p>
-          
-          <p style="margin-bottom:1rem;">My eldest daughter and I wrote a book about my life and my struggles: <a href="https://www.amazon.com/Blood-Thicker-than-Vodka-Janine/dp/1959770365" target="_blank" rel="noopener"><strong>Blood is Thicker than Vodka</strong></a> (available on Amazon).</p>
-          
-          <p style="margin-bottom:1rem;">I created <strong>Fox & Paws in January 2026</strong> so I would be able to continue to help those who struggle in seeking freedom from the bondage of addictive chemicals, unhealthy behaviors, and ways of thinking.</p>
-          
-          <p>I have personally enabled many hundreds of people to find recovery and embrace the joy in living once again.</p>
 
-          <div style="margin-top: 1.75rem;">
-            <a href="tel:+18189614203" class="btn">Schedule a free phone conversation</a>
-          </div>
-        </div>
+```
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="janine-and-dogs.jpg" alt="Janine Fox smiling with her three dogs">
+    </div>
+
+    <div>
+      <p style="margin-bottom:1rem;">
+        I have worked for <strong>21 years as a program director</strong> in two reputable community treatment centers in Ventura County.
+      </p>
+
+      <p style="margin-bottom:1rem;">
+        I am certified as a <strong>CAADE licensed counselor for 22 years</strong> and maintain my annual CEUs.
+      </p>
+
+      <p style="margin-bottom:1rem;">
+        On a personal level, I have overcome multiple addictions and unhealthy dependencies in my life. Through AA, I have been <strong>sober 23 years</strong>. AA is not mandatory, but I do encourage people with addictive chemistry to seek out its many benefits.
+      </p>
+
+      <p style="margin-bottom:1rem;">
+        I struggled with an eating disorder (bulimia nervosa) for 25 years. I have also worked a program for recovery from codependency, manifested by growing up with alcoholic parents who were unavailable.
+      </p>
+
+      <p style="margin-bottom:1rem;">
+        My eldest daughter and I wrote a book about my life and my struggles:
+        <a href="https://www.amazon.com/Blood-Thicker-than-Vodka-Janine/dp/1959770365" target="_blank" rel="noopener">
+          <strong>Blood is Thicker than Vodka</strong>
+        </a>
+        (available on Amazon).
+      </p>
+
+      <p style="margin-bottom:1rem;">
+        I created <strong>Fox & Paws in January 2026</strong> so I would be able to continue to help those who struggle in seeking freedom from the bondage of addictive chemicals, unhealthy behaviors, and ways of thinking.
+      </p>
+
+      <p>
+        I have personally enabled many hundreds of people to find recovery and embrace the joy in living once again.
+      </p>
+
+      <div style="margin-top: 1.75rem;">
+        <a href="tel:+18189614203" class="btn">
+          Schedule a free phone conversation
+        </a>
       </div>
     </div>
+  </div>
+</div>
+```
+
   </section>
 
   <section id="why-coaching" style="background: var(--soft-bg);">
     <div class="container">
       <h2>Why Coaching?</h2>
-      <p class="section-intro">Coaching can really help the individual who is in the contemplative or preparation stage of change.</p>
-      
-      <p style="margin-bottom:1.25rem;">Going into treatment is a huge commitment and can cause a great deal of anxiety for people who are afraid they will lose their job, or mothers having to leave their children. Coaching can be the bridge that helps make the decision if treatment is necessary.</p>
-      
-      <p style="margin-bottom:1.25rem;">Also, A.A. can be intimidating. Atheists and agnostics can struggle with religious concepts within the program. I am able to clearly explain the freedom that an individual can find in fitting their personal belief system into the spiritual principles of AA.</p>
-      
-      <p>If AA is not a fit for the individual, I believe there are other successful roads to recovery by using CBT and spiritual concepts.</p>
-    </div>
+
+```
+  <p class="section-intro">
+    Coaching can really help the individual who is in the contemplative or preparation stage of change.
+  </p>
+
+  <p style="margin-bottom:1.25rem;">
+    Going into treatment is a huge commitment and can cause a great deal of anxiety for people who are afraid they will lose their job, or mothers having to leave their children. Coaching can be the bridge that helps make the decision if treatment is necessary.
+  </p>
+
+  <p style="margin-bottom:1.25rem;">
+    Also, A.A. can be intimidating. Atheists and agnostics can struggle with religious concepts within the program. I am able to clearly explain the freedom that an individual can find in fitting their personal belief system into the spiritual principles of AA.
+  </p>
+
+  <p>
+    If AA is not a fit for the individual, I believe there are other successful roads to recovery by using CBT and spiritual concepts.
+  </p>
+</div>
+```
+
   </section>
 
   <section id="services">
     <div class="container">
       <h2 class="accent-clay">Services</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>One-on-One Sessions</h3>
-          <p>Personalized support tailored to where you are in your recovery journey.</p>
-        </div>
-        <div class="service-card">
-          <h3>Goal Setting</h3>
-          <p>Clear, realistic goals that move you forward at a pace that feels right.</p>
-        </div>
-        <div class="service-card">
-          <h3>Addiction Education</h3>
-          <p>Understanding the nature of addiction and how recovery works.</p>
-        </div>
-        <div class="service-card">
-          <h3>Accountability</h3>
-          <p>Consistent check-ins that help you stay aligned with your intentions.</p>
-        </div>
-        <div class="service-card">
-          <h3>Relapse Prevention</h3>
-          <p>Practical tools and planning to strengthen resilience.</p>
-        </div>
-        <div class="service-card">
-          <h3>Emotional Support</h3>
-          <p>A compassionate space to process what you’re going through.</p>
-        </div>
-        <div class="service-card">
-          <h3>Ongoing Weekly Support</h3>
-          <p>Support through text and voice notes between sessions.</p>
-        </div>
-      </div>
+
+```
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>One-on-One Sessions</h3>
+      <p>Personalized support tailored to where you are in your recovery journey.</p>
     </div>
+
+    <div class="service-card">
+      <h3>Goal Setting</h3>
+      <p>Clear, realistic goals that move you forward at a pace that feels right.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Addiction Education</h3>
+      <p>Understanding the nature of addiction and how recovery works.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Accountability</h3>
+      <p>Consistent check-ins that help you stay aligned with your intentions.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Relapse Prevention</h3>
+      <p>Practical tools and planning to strengthen resilience.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Emotional Support</h3>
+      <p>A compassionate space to process what you’re going through.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Ongoing Weekly Support</h3>
+      <p>Support through text and voice notes between sessions.</p>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <section style="background: var(--soft-bg);">
     <div class="container">
       <h2>Who This Is For</h2>
-      <div class="two-col">
-        <div class="info-box">
-          <h3>Early Recovery Support</h3>
-          <p style="margin-bottom:0.75rem;">Perfect for someone who:</p>
-          <ul>
-            <li>Just left treatment, IOP, or Sober Living</li>
-            <li>Wants extra accountability</li>
-            <li>Has relapsed and needs guidance</li>
-            <li>Is building a recovery routine</li>
-          </ul>
-        </div>
-        <div class="info-box">
-          <h3>Recovery Maintenance</h3>
-          <p>For people with months or years sober who want to continue growing emotionally and spiritually.</p>
-        </div>
-      </div>
+
+```
+  <div class="two-col">
+    <div class="info-box">
+      <h3>Early Recovery Support</h3>
+
+      <p style="margin-bottom:0.75rem;">
+        Perfect for someone who:
+      </p>
+
+      <ul>
+        <li>Just left treatment, IOP, or Sober Living</li>
+        <li>Wants extra accountability</li>
+        <li>Has relapsed and needs guidance</li>
+        <li>Is building a recovery routine</li>
+      </ul>
     </div>
+
+    <div class="info-box">
+      <h3>Recovery Maintenance</h3>
+      <p>
+        For people with months or years sober who want to continue growing emotionally and spiritually.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <section>
     <div class="container">
       <h2>What Recovery Coaching Is (and Is Not)</h2>
-      <div class="two-col">
-        <div class="info-box">
-          <h3>Recovery Coaching is:</h3>
-          <ul>
-            <li>Encouragement</li>
-            <li>Accountability</li>
-            <li>Education</li>
-            <li>Goal Setting</li>
-            <li>Support</li>
-            <li>Connection</li>
-            <li>Practical tools</li>
-          </ul>
-        </div>
-        <div class="info-box">
-          <h3>Recovery Coaching is not:</h3>
-          <ul>
-            <li>Therapy</li>
-            <li>Medical Advice</li>
-            <li>Making clinical diagnoses</li>
-          </ul>
-        </div>
-      </div>
+
+```
+  <div class="two-col">
+    <div class="info-box">
+      <h3>Recovery Coaching is:</h3>
+
+      <ul>
+        <li>Encouragement</li>
+        <li>Accountability</li>
+        <li>Education</li>
+        <li>Goal Setting</li>
+        <li>Support</li>
+        <li>Connection</li>
+        <li>Practical tools</li>
+      </ul>
     </div>
+
+    <div class="info-box">
+      <h3>Recovery Coaching is not:</h3>
+
+      <ul>
+        <li>Therapy</li>
+        <li>Medical Advice</li>
+        <li>Making clinical diagnoses</li>
+      </ul>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- Testimonials -->
+
   <section id="testimonials" style="background: var(--soft-bg);">
     <div class="container">
       <h2 class="accent-marigold">Testimonials</h2>
-      <p class="section-intro">Stories of hope and change from people who have walked this path.</p>
 
-      <div id="testimonials-list">
-        <article class="testimony">
-          <blockquote>
-            “I came broken and unsure, but through the compassion and steady guidance I found here, I began to rebuild. Recovery finally feels possible.”
-          </blockquote>
-          <div class="author">— Sarah M.</div>
-          <div class="date">2025</div>
-        </article>
+```
+  <p class="section-intro">
+    Stories of hope and change from people who have walked this path.
+  </p>
 
-        <article class="testimony">
-          <blockquote>
-            “The accountability and genuine care made all the difference. I finally understood that I didn’t have to do this alone.”
-          </blockquote>
-          <div class="author">— James T.</div>
-          <div class="date">2025</div>
-        </article>
+  <div id="testimonials-list">
+    <article class="testimony">
+      <blockquote>
+        “I came broken and unsure, but through the compassion and steady guidance I found here, I began to rebuild. Recovery finally feels possible.”
+      </blockquote>
 
-        <article class="testimony">
-          <blockquote>
-            “Janine’s experience — both professional and personal — gave me hope. She met me where I was, without judgment.”
-          </blockquote>
-          <div class="author">— Rachel K.</div>
-          <div class="date">2026</div>
-        </article>
-      </div>
-    </div>
+      <div class="author">— Sarah M.</div>
+      <div class="date">2025</div>
+    </article>
+
+    <article class="testimony">
+      <blockquote>
+        “The accountability and genuine care made all the difference. I finally understood that I didn’t have to do this alone.”
+      </blockquote>
+
+      <div class="author">— James T.</div>
+      <div class="date">2025</div>
+    </article>
+
+    <article class="testimony">
+      <blockquote>
+        “Janine’s experience — both professional and personal — gave me hope. She met me where I was, without judgment.”
+      </blockquote>
+
+      <div class="author">— Rachel K.</div>
+      <div class="date">2026</div>
+    </article>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- Photo Library -->
+
   <section id="photos">
     <div class="container">
       <h2 class="accent-clay">Photo Library</h2>
-      <div class="heading-carousel hc-empty" id="hc-photos"></div>
-      <p class="section-intro">Moments of connection, healing, and the gentle presence of the dogs.</p>
 
-      <div class="gallery" id="photo-gallery">
-        <div class="photo-card">
-          <img src="janine-fox.jpg" alt="Janine with her dogs">
-          <div class="caption">
-            Janine & the dogs
-            <div class="date">Fox & Paws</div>
-          </div>
-        </div>
+```
+  <div class="heading-carousel hc-empty" id="hc-photos"></div>
+
+  <p class="section-intro">
+    Moments of connection, healing, and the gentle presence of the dogs.
+  </p>
+
+  <div class="gallery" id="photo-gallery">
+    <div class="photo-card">
+      <img src="janine-fox.jpg" alt="Janine with her dogs">
+
+      <div class="caption">
+        Janine & the dogs
+        <div class="date">Fox & Paws</div>
       </div>
     </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- Resources -->
+
   <section id="resources" style="background: var(--soft-bg);">
     <div class="container">
       <h2 class="accent-harbor">Resources</h2>
-      <p class="section-intro">A story each month to reflect on, and a space to talk about it together.</p>
 
-      <div class="resource-section">
-        <h3>This Month's Story</h3>
-        <div id="story-content">
-          <p style="color: var(--text-light);">Loading…</p>
-        </div>
+```
+  <p class="section-intro">
+    A story each month to reflect on, and a space to talk about it together.
+  </p>
 
-        <div id="story-discussion" style="margin-top: 2rem;">
-          <h4 style="font-family: var(--font-display); color: var(--harbor-dark); margin-bottom: 1rem;">Join the Discussion</h4>
-          <div id="comments-list"></div>
-          <form id="comment-form" style="margin-top: 1rem;">
-            <input type="text" id="comment-name" placeholder="Your name" required>
-            <textarea id="comment-message" placeholder="Share your thoughts…" required></textarea>
-            <div class="comment-status" id="comment-status"></div>
-            <button type="submit" class="btn" style="align-self: flex-start;">Post Comment</button>
-          </form>
-        </div>
-      </div>
+  <div class="resource-section">
+    <h3>This Month's Story</h3>
 
-      <div class="resource-section">
-        <h3>Other Helpful Resources</h3>
-        <ul class="resource-list">
-          <li>AA meetings and literature (aa.org)</li>
-          <li>SAMHSA National Helpline: 1-800-662-HELP (4357)</li>
-          <li>988 Suicide & Crisis Lifeline</li>
-          <li>Discussion questions available after sessions upon request</li>
-        </ul>
-      </div>
+    <div id="story-content">
+      <p style="color: var(--text-light);">Loading…</p>
     </div>
+
+    <div id="story-discussion" style="margin-top: 2rem;">
+      <h4 style="font-family: var(--font-display); color: var(--harbor-dark); margin-bottom: 1rem;">
+        Join the Discussion
+      </h4>
+
+      <div id="comments-list"></div>
+
+      <form id="comment-form" style="margin-top: 1rem;">
+        <input type="text" id="comment-name" placeholder="Your name" required>
+
+        <textarea id="comment-message" placeholder="Share your thoughts…" required></textarea>
+
+        <div class="comment-status" id="comment-status"></div>
+
+        <button type="submit" class="btn" style="align-self: flex-start;">
+          Post Comment
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="resource-section">
+    <h3>Other Helpful Resources</h3>
+
+    <ul class="resource-list">
+      <li>AA meetings and literature (aa.org)</li>
+      <li>SAMHSA National Helpline: 1-800-662-HELP (4357)</li>
+      <li>988 Suicide & Crisis Lifeline</li>
+      <li>Discussion questions available after sessions upon request</li>
+    </ul>
+  </div>
+</div>
+```
+
   </section>
 
   <section id="fees">
     <div class="container">
       <h2 class="accent-clay">Fees</h2>
-      <div class="fees-box">
-        <p class="price">$100 per session</p>
-        <p style="margin-bottom:1rem;">Session time is flexible to meet the needs of the client.</p>
-        <p style="margin-bottom:1rem;"><strong>Four sessions paid up front: $75 per session</strong></p>
-        <p style="margin-bottom:0.5rem;">I do not take insurance.</p>
-        <p>Payment by check, cash, or business Venmo account.</p>
-      </div>
-    </div>
+
+```
+  <div class="fees-box">
+    <p class="price">$100 per session</p>
+
+    <p style="margin-bottom:1rem;">
+      Session time is flexible to meet the needs of the client.
+    </p>
+
+    <p style="margin-bottom:1rem;">
+      <strong>Four sessions paid up front: $75 per session</strong>
+    </p>
+
+    <p style="margin-bottom:0.5rem;">
+      I do not take insurance.
+    </p>
+
+    <p>
+      Payment by check, cash, or business Venmo account.
+    </p>
+  </div>
+</div>
+```
+
   </section>
 
   <section id="dogs">
     <div class="container">
       <h2 class="accent-harbor">Why the Dogs?</h2>
-      <p style="margin-bottom:1.25rem;">Three generations of dogs have worked with me in treatment. Clients requested the dogs attend groups, conjoint and individual sessions — and even their graduating ceremonies.</p>
-      
-      <p style="margin-bottom:1.25rem;">I was informed that the dogs helped reduce their anxiety and depression and made them feel happy, and added a “normal” feeling to a very challenging and scary time in their lives.</p>
-      
-      <h3 style="color: var(--primary-dark); margin: 1.75rem 0 0.75rem;">The Science</h3>
-      <p style="margin-bottom:1.25rem;">Studies have proven the powerful gifts these animals can have in reducing the psychological stress response, anxiety, fear, and other nervous disorders in the traumatized individual. The dogs encourage quicker bonding between the clinician and the client. This bonding is the foundation of the client/clinician relationship. It allows the client to feel secure and safe, which lowers fear of judgement and improves health and treatment success.</p>
-      
-      <div class="quote-box">
-        “Love is considered by many to be the universal healer. There is no purer love than the unconditional love given by a dog.”
-      </div>
-    </div>
+
+```
+  <p style="margin-bottom:1.25rem;">
+    Three generations of dogs have worked with me in treatment. Clients requested the dogs attend groups, conjoint and individual sessions — and even their graduating ceremonies.
+  </p>
+
+  <p style="margin-bottom:1.25rem;">
+    I was informed that the dogs helped reduce their anxiety and depression and made them feel happy, and added a “normal” feeling to a very challenging and scary time in their lives.
+  </p>
+
+  <h3 style="color: var(--primary-dark); margin: 1.75rem 0 0.75rem;">
+    The Science
+  </h3>
+
+  <p style="margin-bottom:1.25rem;">
+    Studies have proven the powerful gifts these animals can have in reducing the psychological stress response, anxiety, fear, and other nervous disorders in the traumatized individual. The dogs encourage quicker bonding between the clinician and the client. This bonding is the foundation of the client/clinician relationship. It allows the client to feel secure and safe, which lowers fear of judgement and improves health and treatment success.
+  </p>
+
+  <div class="quote-box">
+    “Love is considered by many to be the universal healer. There is no purer love than the unconditional love given by a dog.”
+  </div>
+</div>
+```
+
   </section>
 
   <section id="contact" class="contact-section">
     <div class="container">
       <h2 class="accent-marigold">Get in Touch</h2>
-      <p class="section-intro">You don’t have to do this alone.</p>
 
-      <div class="crisis-note">
-        <strong>If you are in crisis:</strong> This is not an emergency service. Please call or text 988 (Suicide & Crisis Lifeline) or go to your nearest emergency room. For substance-use specific support, contact the SAMHSA National Helpline at 1-800-662-HELP (4357).
+```
+  <p class="section-intro">
+    You don’t have to do this alone.
+  </p>
+
+  <div class="crisis-note">
+    <strong>If you are in crisis:</strong>
+    This is not an emergency service. Please call or text 988 (Suicide & Crisis Lifeline) or go to your nearest emergency room. For substance-use specific support, contact the SAMHSA National Helpline at 1-800-662-HELP (4357).
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>
+        <strong>Phone:</strong>
+        <a href="tel:+18189614203">(818) 961-4203</a>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:janinemfox@gmail.com">janinemfox@gmail.com</a>
+      </p>
+
+      <p>
+        <strong>Location:</strong>
+        Ventura County • Telehealth available
+      </p>
+
+      <p>
+        <strong>Hours:</strong>
+        By appointment
+      </p>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="tel:+18189614203" class="btn">
+          Schedule a free phone conversation
+        </a>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p><strong>Phone:</strong> <a href="tel:+18189614203">(818) 961-4203</a></p>
-          <p><strong>Email:</strong> <a href="mailto:janinemfox@gmail.com">janinemfox@gmail.com</a></p>
-          <p><strong>Location:</strong> Ventura County • Telehealth available</p>
-          <p><strong>Hours:</strong> By appointment</p>
-          
-          <div style="margin-top: 1.5rem;">
-            <a href="tel:+18189614203" class="btn">Schedule a free phone conversation</a>
-          </div>
-
-          <p style="margin-top:1.5rem; font-size:0.95rem; color: var(--text-light);">
-            Messages are typically returned within one business day. Please keep initial messages general.
-          </p>
-        </div>
-
-        <form action="https://formspree.io/f/xbdnelvv" method="POST">
-          <input type="hidden" name="_subject" value="New message from Fox & Paws website">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Your email" required>
-          <input type="tel" name="phone" placeholder="Phone (optional)">
-          <textarea name="message" placeholder="How can I help?" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
+      <p style="margin-top:1.5rem; font-size:0.95rem; color: var(--text-light);">
+        Messages are typically returned within one business day. Please keep initial messages general.
+      </p>
     </div>
+
+    <form action="https://formspree.io/f/xbdnelvv" method="POST">
+      <input type="hidden" name="_subject" value="New message from Fox & Paws website">
+
+      <input type="text" name="name" placeholder="Your name" required>
+
+      <input type="email" name="email" placeholder="Your email" required>
+
+      <input type="tel" name="phone" placeholder="Phone (optional)">
+
+      <textarea name="message" placeholder="How can I help?" required></textarea>
+
+      <button type="submit" class="btn">
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+```
+
   </section>
 
   <section style="padding-bottom: 2rem;">
@@ -883,32 +1221,56 @@
 
   <footer>
     <div class="container">
-      <p><strong>Fox & Paws Recovery Coaching</strong></p>
-      <p style="margin: 0.5rem 0;">Janine Fox • CAADE Licensed Counselor</p>
-      
-      <div style="margin: 1.25rem 0;">
-        <a href="tel:+18189614203" class="btn" style="background: #6b8454;">Schedule a free phone conversation</a>
-      </div>
-
-      <div class="footer-links">
-        <a href="#about">About Janine</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#photos">Photos</a>
-        <a href="#resources">Resources</a>
-        <a href="#fees">Fees</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <p style="margin-top: 1.5rem; opacity: 0.85; font-size: 0.85rem;">
-        Recovery coaching is not therapy, medical advice, or clinical diagnosis.<br>
-        © 2026 Fox & Paws Recovery Coaching. All rights reserved.
+      <p>
+        <strong>Fox & Paws Recovery Coaching</strong>
       </p>
-    </div>
+
+```
+  <p style="margin: 0.5rem 0;">
+    Janine Fox • CAADE Licensed Counselor
+  </p>
+
+  <div style="margin: 1.25rem 0;">
+    <a href="tel:+18189614203" class="btn" style="background: #6b8454;">
+      Schedule a free phone conversation
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="#about">About Janine</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#photos">Photos</a>
+    <a href="#resources">Resources</a>
+    <a href="#fees">Fees</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <p style="margin-top: 1.5rem; opacity: 0.85; font-size: 0.85rem;">
+    Recovery coaching is not therapy, medical advice, or clinical diagnosis.<br>
+    © 2026 Fox & Paws Recovery Coaching. All rights reserved.
+  </p>
+</div>
+```
+
   </footer>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-    import { getFirestore, collection, query, orderBy, where, limit, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+
+    import {
+      getFirestore,
+      collection,
+      query,
+      orderBy,
+      where,
+      limit,
+      getDocs,
+      addDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
     const app = initializeApp(window.firebaseConfig);
     const db = getFirestore(app);
@@ -921,62 +1283,104 @@
 
     async function loadTestimonials() {
       const el = document.getElementById('testimonials-list');
+
       try {
-        const q = query(collection(db, 'testimonials'), orderBy('createdAt', 'desc'));
+        const q = query(
+          collection(db, 'testimonials'),
+          orderBy('createdAt', 'desc')
+        );
+
         const snap = await getDocs(q);
-        if (snap.empty) return; // keep fallback content already in the HTML
+
+        if (snap.empty) return;
+
         el.innerHTML = '';
+
         snap.forEach(doc => {
           const t = doc.data();
+
           el.insertAdjacentHTML('beforeend', `
             <article class="testimony">
               <blockquote>“${escapeHtml(t.quote)}”</blockquote>
               <div class="author">— ${escapeHtml(t.author)}</div>
               <div class="date">${escapeHtml(t.year)}</div>
-            </article>`);
+            </article>
+          `);
         });
-      } catch (e) { console.error('testimonials load failed', e); }
+
+      } catch (e) {
+        console.error('testimonials load failed', e);
+      }
     }
 
     async function loadPhotos() {
       const el = document.getElementById('photo-gallery');
       const carouselIds = ['hc-photos'];
+
       try {
-        const q = query(collection(db, 'photos'), orderBy('createdAt', 'desc'));
+        const q = query(
+          collection(db, 'photos'),
+          orderBy('createdAt', 'desc')
+        );
+
         const snap = await getDocs(q);
-        if (snap.empty) return; // keep fallback content already in the HTML; carousels stay hidden
+
+        if (snap.empty) return;
+
         const photos = [];
+
         snap.forEach(doc => photos.push(doc.data()));
 
         el.innerHTML = '';
+
         photos.forEach(p => {
           el.insertAdjacentHTML('beforeend', `
             <div class="photo-card">
               <img src="${escapeHtml(p.url)}" alt="${escapeHtml(p.caption || 'Fox & Paws photo')}">
               <div class="caption">${escapeHtml(p.caption || '')}</div>
-            </div>`);
+            </div>
+          `);
         });
 
         carouselIds.forEach(id => buildCarousel(id, photos));
-      } catch (e) { console.error('photos load failed', e); }
+
+      } catch (e) {
+        console.error('photos load failed', e);
+      }
     }
 
     function buildCarousel(containerId, photos) {
       const el = document.getElementById(containerId);
+
       if (!el || !photos || photos.length === 0) return;
+
       el.classList.remove('hc-empty');
 
       let idx = 0;
+
       el.innerHTML = `
         <div class="hc-track">
-          ${photos.map(p => `<div class="hc-slide"><img src="${escapeHtml(p.url)}" alt="${escapeHtml(p.caption || 'Fox & Paws photo')}"></div>`).join('')}
+          ${photos.map(p => `
+            <div class="hc-slide">
+              <img src="${escapeHtml(p.url)}" alt="${escapeHtml(p.caption || 'Fox & Paws photo')}">
+            </div>
+          `).join('')}
         </div>
+
         ${photos.length > 1 ? `
           <button class="hc-arrow hc-prev" aria-label="Previous photo">&#10094;</button>
           <button class="hc-arrow hc-next" aria-label="Next photo">&#10095;</button>
+
           <div class="hc-dots">
-            ${photos.map((_, i) => `<button class="hc-dot${i === 0 ? ' active' : ''}" data-i="${i}" aria-label="Go to photo ${i + 1}"></button>`).join('')}
-          </div>` : ''}
+            ${photos.map((_, i) => `
+              <button
+                class="hc-dot${i === 0 ? ' active' : ''}"
+                data-i="${i}"
+                aria-label="Go to photo ${i + 1}">
+              </button>
+            `).join('')}
+          </div>
+        ` : ''}
       `;
 
       if (photos.length <= 1) return;
@@ -986,40 +1390,72 @@
 
       function goTo(i) {
         idx = (i + photos.length) % photos.length;
+
         track.style.transform = `translateX(-${idx * 100}%)`;
-        dots.forEach((d, di) => d.classList.toggle('active', di === idx));
+
+        dots.forEach((d, di) => {
+          d.classList.toggle('active', di === idx);
+        });
       }
 
-      el.querySelector('.hc-prev').addEventListener('click', () => goTo(idx - 1));
-      el.querySelector('.hc-next').addEventListener('click', () => goTo(idx + 1));
-      dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.i, 10))));
+      el.querySelector('.hc-prev')
+        .addEventListener('click', () => goTo(idx - 1));
+
+      el.querySelector('.hc-next')
+        .addEventListener('click', () => goTo(idx + 1));
+
+      dots.forEach(d => {
+        d.addEventListener('click', () => {
+          goTo(parseInt(d.dataset.i, 10));
+        });
+      });
 
       let timer = setInterval(() => goTo(idx + 1), 5000);
+
       el.addEventListener('mouseenter', () => clearInterval(timer));
-      el.addEventListener('mouseleave', () => { timer = setInterval(() => goTo(idx + 1), 5000); });
+
+      el.addEventListener('mouseleave', () => {
+        timer = setInterval(() => goTo(idx + 1), 5000);
+      });
     }
 
     let currentStoryId = null;
 
     async function loadMonthlyStory() {
       const el = document.getElementById('story-content');
+
       try {
-        const q = query(collection(db, 'monthlyStories'), orderBy('createdAt', 'desc'), limit(1));
+        const q = query(
+          collection(db, 'monthlyStories'),
+          orderBy('createdAt', 'desc'),
+          limit(1)
+        );
+
         const snap = await getDocs(q);
+
         if (snap.empty) {
-          el.innerHTML = '<p style="color: var(--text-light);">No story posted yet — check back soon.</p>';
+          el.innerHTML =
+            '<p style="color: var(--text-light);">No story posted yet — check back soon.</p>';
+
           document.getElementById('story-discussion').style.display = 'none';
+
           return;
         }
+
         const d = snap.docs[0];
+
         currentStoryId = d.id;
+
         const s = d.data();
+
         el.innerHTML = `
           <div class="story-month">${escapeHtml(s.month || '')}</div>
           <div class="story-title">${escapeHtml(s.title || '')}</div>
           <div class="story-body">${escapeHtml(s.body || '')}</div>
         `;
+
         loadComments();
+
       } catch (e) {
         console.error('story load failed', e);
       }
@@ -1027,49 +1463,96 @@
 
     async function loadComments() {
       const list = document.getElementById('comments-list');
+
       if (!currentStoryId) return;
-      list.innerHTML = '<p style="color: var(--text-light);">Loading comments…</p>';
+
+      list.innerHTML =
+        '<p style="color: var(--text-light);">Loading comments…</p>';
+
       try {
-        const q = query(collection(db, 'storyComments'), where('storyId', '==', currentStoryId), orderBy('createdAt', 'asc'));
+        const q = query(
+          collection(db, 'storyComments'),
+          where('storyId', '==', currentStoryId),
+          orderBy('createdAt', 'asc')
+        );
+
         const snap = await getDocs(q);
+
         if (snap.empty) {
-          list.innerHTML = '<p style="color: var(--text-light);">Be the first to share your thoughts.</p>';
+          list.innerHTML =
+            '<p style="color: var(--text-light);">Be the first to share your thoughts.</p>';
+
           return;
         }
+
         list.innerHTML = '';
+
         snap.forEach(doc => {
           const c = doc.data();
+
           list.insertAdjacentHTML('beforeend', `
             <div class="comment-card">
               <span class="comment-name">${escapeHtml(c.name)}</span>
               <span class="comment-message">${escapeHtml(c.message)}</span>
-            </div>`);
+            </div>
+          `);
         });
+
       } catch (e) {
         console.error('comments load failed', e);
-        list.innerHTML = '<p style="color: var(--text-light);">Comments couldn\'t be loaded right now.</p>';
+
+        list.innerHTML =
+          '<p style="color: var(--text-light);">Comments couldn\'t be loaded right now.</p>';
       }
     }
 
     const commentForm = document.getElementById('comment-form');
+
     if (commentForm) {
       commentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         const statusEl = document.getElementById('comment-status');
-        const name = document.getElementById('comment-name').value.trim();
-        const message = document.getElementById('comment-message').value.trim();
-        if (!currentStoryId) { statusEl.textContent = 'No story to comment on yet.'; statusEl.className = 'comment-status error'; return; }
-        if (!name || !message) { statusEl.textContent = 'Please fill in both fields.'; statusEl.className = 'comment-status error'; return; }
+
+        const name =
+          document.getElementById('comment-name').value.trim();
+
+        const message =
+          document.getElementById('comment-message').value.trim();
+
+        if (!currentStoryId) {
+          statusEl.textContent = 'No story to comment on yet.';
+          statusEl.className = 'comment-status error';
+          return;
+        }
+
+        if (!name || !message) {
+          statusEl.textContent = 'Please fill in both fields.';
+          statusEl.className = 'comment-status error';
+          return;
+        }
+
         try {
           await addDoc(collection(db, 'storyComments'), {
-            storyId: currentStoryId, name, message, createdAt: serverTimestamp()
+            storyId: currentStoryId,
+            name,
+            message,
+            createdAt: serverTimestamp()
           });
+
           document.getElementById('comment-name').value = '';
           document.getElementById('comment-message').value = '';
-          statusEl.textContent = 'Comment posted!'; statusEl.className = 'comment-status ok';
+
+          statusEl.textContent = 'Comment posted!';
+          statusEl.className = 'comment-status ok';
+
           loadComments();
+
         } catch (err) {
-          statusEl.textContent = 'Error posting comment: ' + err.message; statusEl.className = 'comment-status error';
+          statusEl.textContent =
+            'Error posting comment: ' + err.message;
+
+          statusEl.className = 'comment-status error';
         }
       });
     }
