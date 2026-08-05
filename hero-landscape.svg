@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d9a8"/>
+      <stop offset="55%" stop-color="#f5ecda"/>
+      <stop offset="100%" stop-color="#faf6ee"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c9932e" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c9932e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="1600" height="500" fill="url(#sky)"/>
+
+  <!-- Sun with soft glow -->
+  <circle cx="1180" cy="160" r="150" fill="url(#sunGlow)"/>
+  <circle cx="1180" cy="160" r="62" fill="#c9932e"/>
+
+  <!-- Birds -->
+  <path d="M300,90 Q312,78 324,90 Q336,78 348,90" stroke="#3f7a8c" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M380,130 Q390,120 400,130 Q410,120 420,130" stroke="#3f7a8c" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Distant hazy hills -->
+  <path d="M0,300 C200,250 350,290 550,260 C750,230 900,270 1100,240 C1300,215 1450,250 1600,230 L1600,500 L0,500 Z" fill="#7fa3ae" opacity="0.55"/>
+
+  <!-- Mid hills -->
+  <path d="M0,350 C180,300 320,340 500,320 C720,295 880,335 1080,310 C1300,282 1450,320 1600,300 L1600,500 L0,500 Z" fill="#3f6b4a" opacity="0.75"/>
+
+  <!-- Front hill -->
+  <path d="M0,420 C220,370 420,410 640,390 C860,368 1020,405 1250,382 C1400,368 1520,392 1600,378 L1600,500 L0,500 Z" fill="#23402c"/>
+
+  <!-- Pine trees on the front hill -->
+  <g fill="#1a3222">
+    <polygon points="130,392 150,340 170,392"/>
+    <polygon points="130,375 150,330 170,375"/>
+    <rect x="146" y="392" width="8" height="14"/>
+
+    <polygon points="220,398 238,352 256,398"/>
+    <polygon points="220,382 238,345 256,382"/>
+    <rect x="234" y="398" width="8" height="12"/>
+
+    <polygon points="1440,390 1460,338 1480,390"/>
+    <polygon points="1440,373 1460,328 1480,373"/>
+    <rect x="1456" y="390" width="8" height="14"/>
+
+    <polygon points="1510,398 1526,356 1542,398"/>
+    <polygon points="1510,384 1526,349 1542,384"/>
+    <rect x="1522" y="398" width="8" height="12"/>
+  </g>
+</svg>
