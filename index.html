@@ -252,9 +252,18 @@
     }
 
     .hero {
-      background: linear-gradient(160deg, var(--accent) 0%, var(--soft-bg) 100%);
-      padding: 4.5rem 1.5rem;
+      background:
+        linear-gradient(rgba(35, 64, 44, 0.5), rgba(35, 64, 44, 0.5)),
+        url('hero-landscape.svg') center/cover no-repeat;
+      padding: 5.5rem 1.5rem;
       text-align: center;
+    }
+
+    .hero-paw {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 1.25rem;
+      display: block;
     }
 
     .hero-content { max-width: 760px; margin: 0 auto; }
@@ -262,19 +271,21 @@
     .hero h1 {
       font-family: var(--font-display);
       font-size: 2.6rem;
-      color: var(--primary-dark);
+      color: var(--white);
       margin-bottom: 1rem;
       line-height: 1.2;
       font-weight: 600;
+      text-shadow: 0 2px 12px rgba(35, 64, 44, 0.4);
     }
 
     .hero .quote {
       font-family: var(--font-display);
       font-size: 1.25rem;
-      color: var(--text-light);
+      color: #f0ead9;
       font-style: italic;
       margin-bottom: 2rem;
       line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(35, 64, 44, 0.35);
     }
 
     .hero-buttons {
@@ -282,6 +293,16 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    .hero .btn-outline {
+      border-color: var(--accent);
+      color: var(--accent) !important;
+    }
+
+    .hero .btn-outline:hover {
+      background: var(--accent);
+      color: var(--primary-dark) !important;
     }
 
     section { padding: 4rem 1.5rem; }
@@ -552,6 +573,13 @@
 
   <section class="hero">
     <div class="hero-content">
+      <svg class="hero-paw" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
+        <ellipse cx="18" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(-25 18 36)"/>
+        <ellipse cx="37" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(-8 37 19)"/>
+        <ellipse cx="63" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(8 63 19)"/>
+        <ellipse cx="82" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(25 82 36)"/>
+      </svg>
       <h1>Fox & Paws Recovery Coaching</h1>
       <p class="quote">“Recovery isn’t simply about stopping a behavior. It’s about creating a life you no longer want to escape from.”</p>
       <div class="hero-buttons">
