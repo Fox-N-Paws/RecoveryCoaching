@@ -293,70 +293,53 @@
     }
 
  /* HERO LANDSCAPE */
-.hero {
-  position: relative;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5.5rem 1.5rem;
-  text-align: center;
-  overflow: hidden;
+```html
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
 
-  background-image: url("https://fox-n-paws.github.io/RecoveryCoaching/hero-landscape.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+    <svg class="hero-paw" viewBox="0 0 100 100"
+         xmlns="http://www.w3.org/2000/svg"
+         aria-hidden="true">
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(35, 64, 44, 0.25);
-  z-index: 1;
-}
+      <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
+      <ellipse cx="18" cy="36" rx="12" ry="15"
+               fill="#f5ecda"
+               transform="rotate(-25 18 36)"/>
+      <ellipse cx="37" cy="19" rx="12" ry="15"
+               fill="#f5ecda"
+               transform="rotate(-8 37 19)"/>
+      <ellipse cx="63" cy="19" rx="12" ry="15"
+               fill="#f5ecda"
+               transform="rotate(8 63 19)"/>
+      <ellipse cx="82" cy="36" rx="12" ry="15"
+               fill="#f5ecda"
+               transform="rotate(25 82 36)"/>
+    </svg>
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
-  margin: 0 auto;
-}
+    <h1>Fox &amp; Paws Recovery Coaching</h1>
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
-      margin: 0 auto;
-    }
+    <p class="quote">
+      “Recovery isn’t simply about stopping a behavior.
+      It’s about creating a life you no longer want to escape from.”
+    </p>
 
-    .hero-paw {
-      width: 62px;
-      height: 62px;
-      margin: 0 auto 1.25rem;
-      display: block;
-    }
+    <div class="hero-buttons">
 
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: 2.6rem;
-      color: var(--white);
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      font-weight: 600;
-      text-shadow: 0 2px 12px rgba(35, 64, 44, 0.55);
-    }
+      <a href="tel:+18189614203" class="btn">
+        Schedule a free phone conversation
+      </a>
 
-    .hero .quote {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      color: #f0ead9;
-      font-style: italic;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-      text-shadow: 0 1px 8px rgba(35, 64, 44, 0.55);
-    }
+      <a href="#contact" class="btn btn-outline">
+        Send a Message
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
 
     .hero-buttons {
       display: flex;
