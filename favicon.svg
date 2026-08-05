@@ -1,5 +1,23 @@
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta name="theme-color" content="#3f6b4a">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Fox and Paws heart paw icon">
+  <rect width="180" height="180" rx="34" fill="#f5ecda"/>
+  <g fill="#3f6b4a">
+    <ellipse cx="48" cy="61" rx="17" ry="25" transform="rotate(-24 48 61)"/>
+    <ellipse cx="76" cy="43" rx="16" ry="24" transform="rotate(-8 76 43)"/>
+    <ellipse cx="104" cy="43" rx="16" ry="24" transform="rotate(8 104 43)"/>
+    <ellipse cx="132" cy="61" rx="17" ry="25" transform="rotate(24 132 61)"/>
+    <path d="M90 77
+             C62 77 43 99 43 124
+             C43 143 59 151 76 143
+             C84 139 96 139 104 143
+             C121 151 137 143 137 124
+             C137 99 118 77 90 77Z"/>
+  </g>
+  <path fill="#f5ecda" d="M90 126
+           C83 119 68 109 68 97
+           C68 88 75 82 83 82
+           C87 82 91 84 94 88
+           C97 84 101 82 106 82
+           C114 82 121 88 121 97
+           C121 109 106 119 90 126Z"/>
+</svg>
