@@ -8,7 +8,7 @@
   <meta name="description" content="Compassionate recovery coaching with Janine Fox. Support for addiction, codependency, and building a life you no longer want to escape from.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Neuton:wght@400;700;800&family=Josefin+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Neuton:wght@400;700;800&family=Josefin+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
       --primary: #3f6b4a;
@@ -671,6 +671,7 @@
     }
 
     .heading-carousel .hc-slide {
+      position: relative;
       min-width: 100%;
       height: 100%;
     }
@@ -681,6 +682,24 @@
       object-fit: contain;
       display: block;
       background: var(--accent);
+    }
+
+    .heading-carousel .hc-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 0.62rem 0.85rem;
+      border-radius: 10px;
+      background: rgba(35, 64, 44, 0.68);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      line-height: 1.35;
+      text-align: left;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .heading-carousel .hc-arrow {
@@ -1454,6 +1473,167 @@
       }
     }
 
+  
+    /* Dropdown navigation */
+    #primary-navigation,
+    #primary-navigation a,
+    .nav-dropdown-toggle {
+      font-family: "Playfair Display", serif;
+    }
+
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-left: 1.1rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle:focus-visible {
+      color: var(--clay);
+    }
+
+    .dropdown-arrow {
+      font-size: 0.78rem;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 0.8rem);
+      left: 0;
+      min-width: 230px;
+      padding: 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 18px 42px rgba(43, 38, 32, 0.16);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+      z-index: 150;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      margin: 0;
+      padding: 0.75rem 0.85rem;
+      border-radius: 9px;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a:focus-visible {
+      background: var(--soft-bg);
+      text-decoration: none;
+    }
+
+    .nav-contact-menu {
+      right: 0;
+      left: auto;
+      min-width: 270px;
+    }
+
+    .nav-contact-menu a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .dropdown-label {
+      color: var(--clay-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      #primary-navigation,
+      #primary-navigation a,
+      .nav-dropdown-toggle {
+        font-family: "Playfair Display", serif;
+      }
+
+      .nav-dropdown {
+        display: block;
+        width: 100%;
+      }
+
+      .nav-dropdown-toggle {
+        width: 100%;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0.9rem 1rem;
+        border-radius: 10px;
+        font-size: 0.98rem;
+      }
+
+      .nav-dropdown-toggle:hover,
+      .nav-dropdown-toggle:focus-visible {
+        background: var(--soft-bg);
+      }
+
+      .nav-dropdown-menu {
+        position: static;
+        min-width: 0;
+        margin: 0.15rem 0 0.35rem;
+        padding: 0 0 0 0.75rem;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+        display: none;
+      }
+
+      .nav-dropdown.is-open .nav-dropdown-menu {
+        display: block;
+      }
+
+      .nav-dropdown-menu a {
+        padding: 0.7rem 1rem;
+        font-size: 0.92rem;
+      }
+
+      .nav-contact-menu {
+        min-width: 0;
+      }
+    }
+
   </style>
 
   <script src="firebase-config.js"></script>
@@ -1483,10 +1663,42 @@
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#photos">Photos</a>
-        <a href="#resources">Resources</a>
+
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            Resources
+            <span class="dropdown-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#story-content">This Month's Story</a>
+            <a href="#story-discussion">Join the Discussion</a>
+            <a href="#helpful-resources-list">Other Helpful Resources</a>
+          </div>
+        </div>
+
         <a href="#fees">Fees</a>
         <a href="#dogs">Why the Dogs?</a>
-        <a href="#contact">Contact</a>
+
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            Contact
+            <span class="dropdown-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown-menu nav-contact-menu">
+            <a href="tel:+18189614203">
+              <span class="dropdown-label">Call</span>
+              <span>(818) 961-4203</span>
+            </a>
+            <a href="mailto:janinemfox@gmail.com">
+              <span class="dropdown-label">Email</span>
+              <span>janinemfox@gmail.com</span>
+            </a>
+            <a href="#contact">
+              <span class="dropdown-label">Contact Form</span>
+              <span>Send a message</span>
+            </a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -2105,6 +2317,47 @@
         }
       });
 
+      document.querySelectorAll(".nav-dropdown-toggle").forEach(toggle => {
+        toggle.addEventListener("click", event => {
+          event.stopPropagation();
+
+          const dropdown = toggle.closest(".nav-dropdown");
+          const willOpen = !dropdown.classList.contains("is-open");
+
+          document.querySelectorAll(".nav-dropdown").forEach(item => {
+            item.classList.remove("is-open");
+            const itemToggle = item.querySelector(".nav-dropdown-toggle");
+            if (itemToggle) itemToggle.setAttribute("aria-expanded", "false");
+          });
+
+          if (willOpen) {
+            dropdown.classList.add("is-open");
+            toggle.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      document.querySelectorAll(".nav-dropdown-menu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.querySelectorAll(".nav-dropdown").forEach(item => {
+            item.classList.remove("is-open");
+            const itemToggle = item.querySelector(".nav-dropdown-toggle");
+            if (itemToggle) itemToggle.setAttribute("aria-expanded", "false");
+          });
+          closeMenu();
+        });
+      });
+
+      document.addEventListener("click", event => {
+        if (!event.target.closest(".nav-dropdown")) {
+          document.querySelectorAll(".nav-dropdown").forEach(item => {
+            item.classList.remove("is-open");
+            const itemToggle = item.querySelector(".nav-dropdown-toggle");
+            if (itemToggle) itemToggle.setAttribute("aria-expanded", "false");
+          });
+        }
+      });
+
       window.addEventListener("resize", () => {
         if (window.innerWidth > 900) closeMenu();
       });
@@ -2220,6 +2473,7 @@
           ${photos.map(p => `
             <div class="hc-slide">
               <img src="${escapeHtml(p.url)}" alt="${escapeHtml(p.caption || 'Fox & Paws photo')}">
+              ${p.caption ? `<div class="hc-caption">${escapeHtml(p.caption)}</div>` : ''}
             </div>
           `).join('')}
         </div>
