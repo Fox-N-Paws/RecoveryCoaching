@@ -292,75 +292,131 @@
       color: white !important;
     }
 
- /* HERO LANDSCAPE */
-```html
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
+/* ===========================
+   HERO BANNER
+=========================== */
 
-    <svg class="hero-paw" viewBox="0 0 100 100"
-         xmlns="http://www.w3.org/2000/svg"
-         aria-hidden="true">
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 650px;
 
-      <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
-      <ellipse cx="18" cy="36" rx="12" ry="15"
-               fill="#f5ecda"
-               transform="rotate(-25 18 36)"/>
-      <ellipse cx="37" cy="19" rx="12" ry="15"
-               fill="#f5ecda"
-               transform="rotate(-8 37 19)"/>
-      <ellipse cx="63" cy="19" rx="12" ry="15"
-               fill="#f5ecda"
-               transform="rotate(8 63 19)"/>
-      <ellipse cx="82" cy="36" rx="12" ry="15"
-               fill="#f5ecda"
-               transform="rotate(25 82 36)"/>
-    </svg>
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    <h1>Fox &amp; Paws Recovery Coaching</h1>
+    overflow: hidden;
 
-    <p class="quote">
-      “Recovery isn’t simply about stopping a behavior.
-      It’s about creating a life you no longer want to escape from.”
-    </p>
+    background:
+        linear-gradient(
+            rgba(35,64,44,.30),
+            rgba(35,64,44,.30)
+        ),
+        url("hero-landscape.jpg");
 
-    <div class="hero-buttons">
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 
-      <a href="tel:+18189614203" class="btn">
-        Schedule a free phone conversation
-      </a>
+.hero-content{
+    position:relative;
+    z-index:2;
 
-      <a href="#contact" class="btn btn-outline">
-        Send a Message
-      </a>
+    max-width:760px;
 
-    </div>
+    padding:40px;
 
-  </div>
-</section>
+    text-align:center;
+}
 
+.hero-paw{
+    width:70px;
+    height:auto;
+    display:block;
+    margin:0 auto 18px;
+}
 
+.hero h1{
+    font-family:var(--font-display);
+    font-size:3.7rem;
+    font-weight:600;
+    line-height:1.1;
 
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    color:white;
 
-    .hero .btn-outline {
-      border-color: var(--accent);
-      color: var(--accent) !important;
-    }
+    margin-bottom:18px;
 
-    .hero .btn-outline:hover {
-      background: var(--accent);
-      color: var(--primary-dark) !important;
-    }
+    text-shadow:0 3px 15px rgba(0,0,0,.45);
+}
 
-    section {
-      padding: 4rem 1.5rem;
-    }
+.hero .quote{
+
+    font-family:var(--font-display);
+
+    font-size:1.35rem;
+
+    font-style:italic;
+
+    color:white;
+
+    line-height:1.6;
+
+    margin-bottom:35px;
+
+    text-shadow:0 2px 10px rgba(0,0,0,.45);
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero .btn-outline{
+
+    border:2px solid white;
+
+    color:white !important;
+
+}
+
+.hero .btn-outline:hover{
+
+    background:white;
+
+    color:var(--primary-dark) !important;
+
+}
+
+@media (max-width:768px){
+
+.hero{
+
+    min-height:520px;
+
+}
+
+.hero h1{
+
+    font-size:2.4rem;
+
+}
+
+.hero .quote{
+
+    font-size:1.05rem;
+
+}
+
+}
 
     .container {
       max-width: 1000px;
@@ -723,34 +779,46 @@
 
   <!-- HERO -->
 
- <section class="hero">
-  <div class="hero-content">
+<!-- HERO -->
 
-    <svg class="hero-paw" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
-      <ellipse cx="18" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(-25 18 36)"/>
-      <ellipse cx="37" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(-8 37 19)"/>
-      <ellipse cx="63" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(8 63 19)"/>
-      <ellipse cx="82" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(25 82 36)"/>
-    </svg>
+<section class="hero">
 
-    <h1>Fox & Paws Recovery Coaching</h1>
+    <div class="hero-content">
 
-    <p class="quote">
-      “Recovery isn’t simply about stopping a behavior. It’s about creating a life you no longer want to escape from.”
-    </p>
+        <svg class="hero-paw"
+             viewBox="0 0 100 100"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true">
 
-    <div class="hero-buttons">
-      <a href="tel:+18189614203" class="btn">
-        Schedule a free phone conversation
-      </a>
+            <ellipse cx="50" cy="66" rx="24" ry="19" fill="#f5ecda"/>
+            <ellipse cx="18" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(-25 18 36)"/>
+            <ellipse cx="37" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(-8 37 19)"/>
+            <ellipse cx="63" cy="19" rx="12" ry="15" fill="#f5ecda" transform="rotate(8 63 19)"/>
+            <ellipse cx="82" cy="36" rx="12" ry="15" fill="#f5ecda" transform="rotate(25 82 36)"/>
 
-      <a href="#contact" class="btn btn-outline">
-        Send a Message
-      </a>
+        </svg>
+
+        <h1>Fox &amp; Paws<br>Recovery Coaching</h1>
+
+        <p class="quote">
+            “Recovery isn’t simply about stopping a behavior.
+            It's about creating a life you no longer want to escape from.”
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="tel:+18189614203" class="btn">
+                Schedule a Free Phone Conversation
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Send a Message
+            </a>
+
+        </div>
+
     </div>
 
-  </div>
 </section>
   
 <section id="about">
