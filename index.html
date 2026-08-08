@@ -2798,12 +2798,17 @@
     const app = initializeApp(window.firebaseConfig);
     const db = getFirestore(app);
 
-    function escapeHtml(str) {
-      const d = document.createElement('div');
-      d.textContent = str || '';
-      return d.innerHTML;
-    }
-
+   function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
+function decodeStrayEntities(str) {
+  if (!str) return '';
+  const ta = document.createElement('textarea');
+  ta.innerHTML = str;
+  return ta.value;
+}
     async function loadTestimonials() {
       const el = document.getElementById('testimonials-list');
 
@@ -2817,7 +2822,11 @@
 
         if (snap.empty) return;
 
-        el.innerHTML = '';
+        el.innerHTML = '
+            <div class="story-month">${escapeHtml(decodeStrayEntities(s.month || ''))}</div>
+  <div class="story-title">${escapeHtml(decodeStrayEntities(s.title || ''))}</div>
+  <div class="story-body">${escapeHtml(decodeStrayEntities(s.body || ''))}</div>
+`;
 
         snap.forEach(doc => {
           const t = doc.data();
