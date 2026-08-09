@@ -2818,27 +2818,23 @@ function decodeStrayEntities(str) {
           orderBy('createdAt', 'desc')
         );
 
-        const snap = await getDocs(q);
+   const snap = await getDocs(q);
 
-        if (snap.empty) return;
+if (snap.empty) return;
 
-        el.innerHTML = '
-            <div class="story-month">${escapeHtml(decodeStrayEntities(s.month || ''))}</div>
-  <div class="story-title">${escapeHtml(decodeStrayEntities(s.title || ''))}</div>
-  <div class="story-body">${escapeHtml(decodeStrayEntities(s.body || ''))}</div>
-`;
+el.innerHTML = '';
 
-        snap.forEach(doc => {
-          const t = doc.data();
+snap.forEach(doc => {
+  const t = doc.data();
 
-          el.insertAdjacentHTML('beforeend', `
-            <article class="testimony">
-              <blockquote>"${escapeHtml(t.quote)}"</blockquote>
-              <div class="author">— ${escapeHtml(t.author)}</div>
-              <div class="date">${escapeHtml(t.year)}</div>
-            </article>
-          `);
-        });
+  el.insertAdjacentHTML('beforeend', `
+    <article class="testimony">
+      <blockquote>"${escapeHtml(t.quote)}"</blockquote>
+      <div class="author">— ${escapeHtml(t.author)}</div>
+      <div class="date">${escapeHtml(t.year)}</div>
+    </article>
+  `);
+});
 
       } catch (e) {
         console.error('testimonials load failed', e);
