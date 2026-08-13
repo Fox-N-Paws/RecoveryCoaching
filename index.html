@@ -18,143 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Neuton:wght@400;700;800&family=Josefin+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-/* =========================================
-   LUXURY REFINEMENTS — RECOVERY PATH SECTION
-   ========================================= */
-
-/* Give the whole section a softer editorial feel */
-.audience-section {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Subtle background glow */
-.audience-section::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: rgba(201, 147, 46, 0.055);
-  top: -180px;
-  left: -160px;
-  pointer-events: none;
-}
-
-/* Elevated cards */
-.path-card {
-  position: relative;
-  border: 1px solid rgba(160, 116, 31, 0.18);
-  box-shadow:
-    0 18px 45px rgba(43, 38, 32, 0.07),
-    0 3px 10px rgba(43, 38, 32, 0.035);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.path-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 24px 55px rgba(43, 38, 32, 0.10),
-    0 4px 12px rgba(43, 38, 32, 0.04);
-}
-
-/* Small botanical icon becomes more intentional */
-.path-icon {
-  font-size: 1.45rem;
-  margin-bottom: 1.15rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  background: rgba(63, 107, 74, 0.07);
-  border: 1px solid rgba(63, 107, 74, 0.12);
-  border-radius: 50%;
-}
-
-/* Refine A PLACE TO BEGIN / KEEP GROWING */
-.path-label {
-  position: relative;
-  letter-spacing: 0.13em;
-  font-size: 0.76rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  padding-bottom: 0.7rem;
-}
-
-.path-label::after {
-  content: "";
-  display: block;
-  width: 34px;
-  height: 1px;
-  background: var(--marigold);
-  margin-top: 0.7rem;
-  opacity: 0.75;
-}
-
-/* More editorial card titles */
-.path-card h3 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-}
-
-/* Paw-print list rows */
-.path-list li {
-  padding-top: 0.85rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(188, 91, 50, 0.16);
-}
-
-.path-list li:last-child {
-  border-bottom: none;
-}
-
-/* Elevate the blue recovery message */
-.path-card .recovery-note,
-.path-card .path-note {
-  position: relative;
-  box-shadow: 0 8px 24px rgba(63, 122, 140, 0.07);
-}
-
-/* Tiny decorative quotation mark */
-.path-card .recovery-note::before,
-.path-card .path-note::before {
-  content: "“";
-  position: absolute;
-  right: 18px;
-  top: 3px;
-  font-family: Georgia, serif;
-  font-size: 3.5rem;
-  line-height: 1;
-  color: rgba(63, 122, 140, 0.10);
-  pointer-events: none;
-}
-
-/* Make center paw medallion look more custom */
-.recovery-path::after {
-  box-shadow:
-    0 7px 20px rgba(43, 38, 32, 0.09),
-    inset 0 0 0 1px rgba(201, 147, 46, 0.12);
-}
-
-/* Very subtle corner detail on cards */
-.path-card::after {
-  content: "";
-  position: absolute;
-  width: 95px;
-  height: 95px;
-  right: -28px;
-  bottom: -28px;
-  border-radius: 50%;
-  background: rgba(201, 147, 46, 0.07);
-  pointer-events: none;
-}
-
-.path-card-maintenance::after {
-  background: rgba(63, 122, 140, 0.08);
+/* 
 }
   <style>
     :root {
@@ -2144,7 +2008,144 @@
         padding: 2rem 1.25rem;
         border-radius: 20px;
       }
-    }
+    /* =========================================
+   LUXURY REFINEMENTS — RECOVERY PATH SECTION
+   ========================================= */
+
+/* Give the whole section a softer editorial feel */
+.audience-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background glow */
+.audience-section::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(201, 147, 46, 0.055);
+  top: -180px;
+  left: -160px;
+  pointer-events: none;
+}
+
+/* Elevated cards */
+.path-card {
+  position: relative;
+  border: 1px solid rgba(160, 116, 31, 0.18);
+  box-shadow:
+    0 18px 45px rgba(43, 38, 32, 0.07),
+    0 3px 10px rgba(43, 38, 32, 0.035);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.path-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 24px 55px rgba(43, 38, 32, 0.10),
+    0 4px 12px rgba(43, 38, 32, 0.04);
+}
+
+/* Small botanical icon becomes more intentional */
+.path-icon {
+  font-size: 1.45rem;
+  margin-bottom: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(63, 107, 74, 0.07);
+  border: 1px solid rgba(63, 107, 74, 0.12);
+  border-radius: 50%;
+}
+
+/* Refine A PLACE TO BEGIN / KEEP GROWING */
+.path-label {
+  position: relative;
+  letter-spacing: 0.13em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.7rem;
+}
+
+.path-label::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--marigold);
+  margin-top: 0.7rem;
+  opacity: 0.75;
+}
+
+/* More editorial card titles */
+.path-card h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Paw-print list rows */
+.path-list li {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(188, 91, 50, 0.16);
+}
+
+.path-list li:last-child {
+  border-bottom: none;
+}
+
+/* Elevate the blue recovery message */
+.path-card .recovery-note,
+.path-card .path-note {
+  position: relative;
+  box-shadow: 0 8px 24px rgba(63, 122, 140, 0.07);
+}
+
+/* Tiny decorative quotation mark */
+.path-card .recovery-note::before,
+.path-card .path-note::before {
+  content: "“";
+  position: absolute;
+  right: 18px;
+  top: 3px;
+  font-family: Georgia, serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: rgba(63, 122, 140, 0.10);
+  pointer-events: none;
+}
+
+/* Make center paw medallion look more custom */
+.recovery-path::after {
+  box-shadow:
+    0 7px 20px rgba(43, 38, 32, 0.09),
+    inset 0 0 0 1px rgba(201, 147, 46, 0.12);
+}
+
+/* Very subtle corner detail on cards */
+.path-card::after {
+  content: "";
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  right: -28px;
+  bottom: -28px;
+  border-radius: 50%;
+  background: rgba(201, 147, 46, 0.07);
+  pointer-events: none;
+}
+
+.path-card-maintenance::after {
+  background: rgba(63, 122, 140, 0.08);
+}
 
   </style>
 
