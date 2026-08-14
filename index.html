@@ -2256,6 +2256,75 @@
 #families .two-col + .info-box {
   margin-top: 2.5rem;
 }
+  /* =========================================
+   FAMILY SUPPORT GRID — FINAL LAYOUT
+   ========================================= */
+
+#families .family-support-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+
+/* Remove conflicting margins from these boxes */
+#families .family-support-grid .info-box {
+  margin: 0;
+  padding: 2rem;
+}
+
+/* Third box spans both columns */
+#families .family-support-wide {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem !important;
+}
+
+/* Center ALL cream-box headings */
+#families .family-support-grid .info-box h3 {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  color: var(--primary-dark);
+}
+
+/* More breathing room before fancy Janine cards */
+#families .family-support-grid + .recovery-path {
+  margin-top: 4.5rem !important;
+}
+
+/* Fancy card headings */
+#families .recovery-path .path-card h3 {
+  text-align: center;
+}
+
+/* Orange labels */
+#families .recovery-path .path-label {
+  text-align: center;
+}
+
+/* Paw icons on fancy cards */
+#families .recovery-path .path-icon {
+  text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 820px) {
+
+  #families .family-support-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  #families .family-support-wide {
+    grid-column: auto;
+    margin-top: 0 !important;
+  }
+
+  #families .family-support-grid + .recovery-path {
+    margin-top: 3rem !important;
+  }
+}
   </style>
 
   <script src="firebase-config.js"></script>
@@ -2767,30 +2836,60 @@
       Addiction affects the entire family. Loving someone who is struggling with alcohol or drugs can mean living with constant worry, walking on eggshells, trying to prevent consequences, or becoming so focused on their choices that you begin to lose your own boundaries and sense of stability.
     </p>
 
-    <div class="two-col">
+   <div class="family-support-grid">
 
-      <div class="info-box">
-        <h3>🐾 Understanding Codependency &amp; Boundaries</h3>
+  <!-- TOP LEFT -->
+  <div class="info-box">
+    <h3>🐾 Understanding Codependency &amp; Boundaries</h3>
 
-        <p>
-          Behaviors sometimes called “enabling” often begin as attempts to help, protect, or survive. Family coaching can help you recognize the difference between helping and rescuing, supporting and enabling, compassion and taking responsibility.
-        </p>
+    <p>
+      Behaviors sometimes called “enabling” often begin as attempts to help,
+      protect, or survive. Family coaching can help you recognize the difference
+      between helping and rescuing, supporting and enabling, compassion and
+      taking responsibility.
+    </p>
 
-        <p style="margin-top:0.9rem;">
-          A boundary is about what <strong>you</strong> will do—not about controlling another person.
-        </p>
-      </div>
+    <p style="margin-top:0.9rem;">
+      A boundary is about what <strong>you</strong> will do—not about controlling
+      another person.
+    </p>
+  </div>
 
-      <div class="info-box">
-        <h3>🐾 Your Recovery Matters, Too</h3>
 
-        <p>
-          You do not have to wait for your loved one to seek help before beginning your own recovery. Support may include Al-Anon, Nar-Anon, family recovery groups, therapy, individual coaching, journaling, healthy friendships, and learning to set boundaries.
-        </p>
-      </div>
+  <!-- TOP RIGHT -->
+  <div class="info-box">
+    <h3>🐾 Supporting Without Losing Yourself</h3>
 
-    </div>
+    <p>
+      You can love someone deeply while choosing not to lie for them, rescue
+      them from consequences, financially support their addiction, or participate
+      in conversations when they are under the influence.
+    </p>
 
+    <p style="margin-top:0.9rem;">
+      Healthy support allows you to remain compassionate without taking
+      responsibility for another person’s recovery.
+    </p>
+  </div>
+
+
+  <!-- FULL-WIDTH BOX -->
+  <div class="info-box family-support-wide">
+
+    <h3>🐾 Your Recovery Matters, Too</h3>
+
+    <p>
+      You do not have to wait for your loved one to seek help before beginning
+      your own recovery. Support may include Al-Anon, Nar-Anon, family recovery
+      groups, therapy, individual coaching, journaling, healthy friendships,
+      and learning to set boundaries.
+    </p>
+
+  </div>
+
+</div>
+
+      
           <div class="info-box">
         <h3>🐾 Your Recovery Matters, Too</h3>
 
